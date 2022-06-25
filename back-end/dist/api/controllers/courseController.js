@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateCourse = exports.getCourse = exports.getAllCourse = exports.deleteCourse = exports.addCourse = void 0;
+exports.updateCourse = exports.getRandomCourse = exports.getCourseWithEpisodes = exports.getCourse = exports.getAllCourse = exports.deleteCourse = exports.addCourse = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -274,6 +274,87 @@ var updateCourse = /*#__PURE__*/function () {
   return function updateCourse(_x9, _x10) {
     return _ref5.apply(this, arguments);
   };
-}();
+}(); //get 5 random course
+
 
 exports.updateCourse = updateCourse;
+
+var getRandomCourse = /*#__PURE__*/function () {
+  var _ref6 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(req, res) {
+    var courses;
+    return _regenerator["default"].wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.prev = 0;
+            _context6.next = 3;
+            return _course["default"].aggregate([{
+              $sample: {
+                size: 5
+              }
+            }]);
+
+          case 3:
+            courses = _context6.sent;
+            res.status(200).json(courses);
+            _context6.next = 10;
+            break;
+
+          case 7:
+            _context6.prev = 7;
+            _context6.t0 = _context6["catch"](0);
+            res.status(500).json(_context6.t0);
+
+          case 10:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6, null, [[0, 7]]);
+  }));
+
+  return function getRandomCourse(_x11, _x12) {
+    return _ref6.apply(this, arguments);
+  };
+}(); //get course with all episodes
+
+
+exports.getRandomCourse = getRandomCourse;
+
+var getCourseWithEpisodes = /*#__PURE__*/function () {
+  var _ref7 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(req, res) {
+    var id, course;
+    return _regenerator["default"].wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.prev = 0;
+            id = req.params.id;
+            _context7.next = 4;
+            return _course["default"].findById(id).populate("episodes");
+
+          case 4:
+            course = _context7.sent;
+            res.status(200).json(course);
+            _context7.next = 11;
+            break;
+
+          case 8:
+            _context7.prev = 8;
+            _context7.t0 = _context7["catch"](0);
+            res.status(500).json(_context7.t0);
+
+          case 11:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7, null, [[0, 8]]);
+  }));
+
+  return function getCourseWithEpisodes(_x13, _x14) {
+    return _ref7.apply(this, arguments);
+  };
+}();
+
+exports.getCourseWithEpisodes = getCourseWithEpisodes;

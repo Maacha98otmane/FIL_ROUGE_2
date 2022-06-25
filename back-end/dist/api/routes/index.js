@@ -27,6 +27,12 @@ Object.defineProperty(exports, "courseRouter", {
     return _courseRouter.router;
   }
 });
+Object.defineProperty(exports, "episodeRouter", {
+  enumerable: true,
+  get: function get() {
+    return _episodeRouter.router;
+  }
+});
 Object.defineProperty(exports, "formerRouter", {
   enumerable: true,
   get: function get() {
@@ -59,3 +65,5 @@ var _categoryRouter = require("./categoryRouter");
 var _courseRouter = require("./courseRouter");
 
 var _formerRouter = require("./formerRouter");
+
+var _episodeRouter = require("./episodeRouter");

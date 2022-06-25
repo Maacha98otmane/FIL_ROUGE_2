@@ -12,7 +12,7 @@ import {
 
 router.get("/getOne/:id", getCategory)
 router.get("/getAll", getAllCategory)
-router.post("/create",Auth('ADMIN'), addCategory)
+router.post("/create", addCategory)
 router.delete("/delete/:id",Auth('ADMIN'), deleteCategory)
 router.patch("/update/:id",Auth('ADMIN'), updateCategory)
 

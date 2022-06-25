@@ -21,6 +21,12 @@ Object.defineProperty(exports, "addCourse", {
     return _courseController.addCourse;
   }
 });
+Object.defineProperty(exports, "addEpisode", {
+  enumerable: true,
+  get: function get() {
+    return _episodeController.addEpisode;
+  }
+});
 Object.defineProperty(exports, "confirmAccount", {
   enumerable: true,
   get: function get() {
@@ -33,10 +39,16 @@ Object.defineProperty(exports, "confirmEmail", {
     return _customerController.confirmEmail;
   }
 });
+Object.defineProperty(exports, "countEpisodes", {
+  enumerable: true,
+  get: function get() {
+    return _episodeController.countEpisodes;
+  }
+});
 Object.defineProperty(exports, "createAdmin", {
   enumerable: true,
   get: function get() {
-    return _adminController.createAdmin;
+    return _formateurController.createAdmin;
   }
 });
 Object.defineProperty(exports, "createCustomer", {
@@ -81,6 +93,12 @@ Object.defineProperty(exports, "deleteCustomer", {
     return _customerController.deleteCustomer;
   }
 });
+Object.defineProperty(exports, "deleteEpisode", {
+  enumerable: true,
+  get: function get() {
+    return _episodeController.deleteEpisode;
+  }
+});
 Object.defineProperty(exports, "deleteOrder", {
   enumerable: true,
   get: function get() {
@@ -90,13 +108,13 @@ Object.defineProperty(exports, "deleteOrder", {
 Object.defineProperty(exports, "getAdmin", {
   enumerable: true,
   get: function get() {
-    return _adminController.getAdmin;
+    return _formateurController.getAdmin;
   }
 });
 Object.defineProperty(exports, "getAllAdmins", {
   enumerable: true,
   get: function get() {
-    return _adminController.getAllAdmins;
+    return _formateurController.getAllAdmins;
   }
 });
 Object.defineProperty(exports, "getAllCart", {
@@ -115,6 +133,12 @@ Object.defineProperty(exports, "getAllCourse", {
   enumerable: true,
   get: function get() {
     return _courseController.getAllCourse;
+  }
+});
+Object.defineProperty(exports, "getAllEpisodes", {
+  enumerable: true,
+  get: function get() {
+    return _episodeController.getAllEpisodes;
   }
 });
 Object.defineProperty(exports, "getAllFormers", {
@@ -141,6 +165,18 @@ Object.defineProperty(exports, "getCourse", {
     return _courseController.getCourse;
   }
 });
+Object.defineProperty(exports, "getCourseWithEpisodes", {
+  enumerable: true,
+  get: function get() {
+    return _courseController.getCourseWithEpisodes;
+  }
+});
+Object.defineProperty(exports, "getEpisode", {
+  enumerable: true,
+  get: function get() {
+    return _episodeController.getEpisode;
+  }
+});
 Object.defineProperty(exports, "getFormer", {
   enumerable: true,
   get: function get() {
@@ -157,6 +193,12 @@ Object.defineProperty(exports, "getMonthlyOrder", {
   enumerable: true,
   get: function get() {
     return _orderController.getMonthlyOrder;
+  }
+});
+Object.defineProperty(exports, "getRandomCourse", {
+  enumerable: true,
+  get: function get() {
+    return _courseController.getRandomCourse;
   }
 });
 Object.defineProperty(exports, "getUserCart", {
@@ -204,7 +246,7 @@ Object.defineProperty(exports, "payment", {
 Object.defineProperty(exports, "removeAdmin", {
   enumerable: true,
   get: function get() {
-    return _adminController.removeAdmin;
+    return _formateurController.removeAdmin;
   }
 });
 Object.defineProperty(exports, "removeFormer", {
@@ -216,7 +258,7 @@ Object.defineProperty(exports, "removeFormer", {
 Object.defineProperty(exports, "searchAdmin", {
   enumerable: true,
   get: function get() {
-    return _adminController.searchAdmin;
+    return _formateurController.searchAdmin;
   }
 });
 Object.defineProperty(exports, "searchFormer", {
@@ -228,7 +270,7 @@ Object.defineProperty(exports, "searchFormer", {
 Object.defineProperty(exports, "updateAdmin", {
   enumerable: true,
   get: function get() {
-    return _adminController.updateAdmin;
+    return _formateurController.updateAdmin;
   }
 });
 Object.defineProperty(exports, "updateCart", {
@@ -255,6 +297,12 @@ Object.defineProperty(exports, "updateCustomer", {
     return _customerController.updateCustomer;
   }
 });
+Object.defineProperty(exports, "updateEpisode", {
+  enumerable: true,
+  get: function get() {
+    return _episodeController.updateEpisode;
+  }
+});
 Object.defineProperty(exports, "updateFormer", {
   enumerable: true,
   get: function get() {
@@ -276,7 +324,7 @@ var _courseController = require("./courseController");
 
 var _formerController = require("./formerController");
 
-var _adminController = require("./adminController");
+var _formateurController = require("./formateurController");
 
 var _auth_AdminController = require("./Auth/auth_AdminController");
 
@@ -287,3 +335,5 @@ var _cartController = require("./cartController");
 var _orderController = require("./orderController");
 
 var _stripeController = require("./stripeController");
+
+var _episodeController = require("./episodeController");

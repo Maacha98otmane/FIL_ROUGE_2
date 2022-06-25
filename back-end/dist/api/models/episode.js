@@ -9,6 +9,11 @@ var episodeSchema = new mongoose.Schema({
     maxLength: 150,
     trim: true
   },
+  number: {
+    type: Number,
+    require: true,
+    min: 1
+  },
   slug: {
     type: String,
     require: true,

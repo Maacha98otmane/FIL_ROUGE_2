@@ -16,8 +16,9 @@ var _middlewares = require("../middlewares");
 var router = _express["default"].Router();
 
 exports.router = router;
-router.get("/getOne/:id", _controllers.getCategory);
-router.get("/getAll", _controllers.getAllCategory);
-router.post("/create", _controllers.addCategory);
-router["delete"]("/delete/:id", (0, _middlewares.Auth)('ADMIN'), _controllers.deleteCategory);
-router.patch("/update/:id", (0, _middlewares.Auth)('ADMIN'), _controllers.updateCategory);
+router.get("/getOne/:id", _controllers.getEpisode);
+router.get("/getAll", _controllers.getAllEpisodes);
+router.post("/create", _controllers.addEpisode);
+router["delete"]("/delete/:id", (0, _middlewares.Auth)('ADMIN'), _controllers.deleteEpisode);
+router.patch("/update/:id", (0, _middlewares.Auth)('ADMIN'), _controllers.updateEpisode);
+router.get("/count/:id", _controllers.countEpisodes);

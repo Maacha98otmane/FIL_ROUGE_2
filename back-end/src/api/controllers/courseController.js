@@ -57,7 +57,7 @@ const addCourse = async (req, res) => {
       res.status(500).json(err);
     }
 }
-
+      
 const deleteCourse = async (req, res) => {
 
     try {
@@ -97,6 +97,28 @@ const updateCourse = async (req, res) => {
      }
 }
 
+//get 5 random course
+const getRandomCourse = async (req, res) => {
+    try {
+        const courses = await Course.aggregate([
+            { $sample: { size: 5 } }
+        ]);
+        res.status(200).json(courses);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
+//get course with all episodes
+const getCourseWithEpisodes = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const course = await Course.findById(id).populate("episodes");
+        res.status(200).json(course);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
 
 
-export { getCourse ,getAllCourse, addCourse, deleteCourse, updateCourse}
+export { getCourse ,getAllCourse, addCourse, deleteCourse, updateCourse, getRandomCourse, getCourseWithEpisodes}

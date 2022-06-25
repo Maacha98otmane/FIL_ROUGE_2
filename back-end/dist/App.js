@@ -34,6 +34,7 @@ app.use("/api/order", _routes.orderRouter);
 app.use("/api/stripe", _routes.stripeRouter);
 app.use("/api/course", _routes.courseRouter);
 app.use("/api/former", _routes.formerRouter);
+app.use("/api/episode", _routes.episodeRouter);
 app.listen(port, function () {
   console.log("Running on http://".concat(host, ":").concat(port));
 });

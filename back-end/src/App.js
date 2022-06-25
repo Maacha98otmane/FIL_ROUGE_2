@@ -4,10 +4,13 @@ import expressvalidator from "express-validator";
 import cookieParser from "cookie-parser";
 require("dotenv").config();
 import connectDB from "./config/db";
+
+//routers
 import { 
           categoryRouter,
           orderRouter,
           stripeRouter,
+          episodeRouter,
           cartRouter,
           adminRouter,
           courseRouter,
@@ -32,6 +35,7 @@ app.use("/api/order", orderRouter);
 app.use("/api/stripe", stripeRouter);
 app.use("/api/course", courseRouter);
 app.use("/api/former", formerRouter);
+app.use("/api/episode", episodeRouter);
 
 app.listen(port, () => {
   console.log(`Running on http://${host}:${port}`);
