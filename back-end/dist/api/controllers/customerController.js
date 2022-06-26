@@ -111,7 +111,7 @@ exports.createCustomer = createCustomer;
 
 var deleteCustomer = /*#__PURE__*/function () {
   var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
-    var id, customer;
+    var id, customer, user;
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -125,25 +125,33 @@ var deleteCustomer = /*#__PURE__*/function () {
 
           case 4:
             customer = _context2.sent;
+            _context2.next = 7;
+            return _user2["default"].findById({
+              _id: id
+            });
+
+          case 7:
+            user = _context2.sent;
             customer.remove();
+            user.remove();
             return _context2.abrupt("return", res.json({
               message: "Customer deleted successfully!"
             }));
 
-          case 9:
-            _context2.prev = 9;
+          case 13:
+            _context2.prev = 13;
             _context2.t0 = _context2["catch"](0);
             res.status(400).json({
               status: false,
               message: "Customer not found"
             });
 
-          case 12:
+          case 16:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[0, 9]]);
+    }, _callee2, null, [[0, 13]]);
   }));
 
   return function deleteCustomer(_x2, _x3) {
