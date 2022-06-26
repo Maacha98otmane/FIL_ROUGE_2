@@ -4,6 +4,7 @@ import {addCustomer} from "../../../../helpers/api/customer";
 import {useMutation} from "react-query"; // get data && use mutation => post request 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import {Link, Redirect} from "react-router-dom";
 import "./newFormer.css";
 
 
@@ -14,19 +15,18 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 export default function NewFormer() {
   const { register, handleSubmit,reset, formState: { errors } } = useForm();
 
-  const addCustomerMutation = useMutation(addCustomer, {
-    onSuccess: () => {
-      setOpen(true);
-    }
-  });
+  const addCustomerMutation = useMutation(addCustomer);
+  
 
   const onSubmit = (data) => {
     addCustomerMutation.mutate(data)
     reset();
   };
-
   const [open, setOpen] = React.useState(false);
 
+  if (addCustomerMutation.isSuccess) {
+    return <Redirect to="/formers" />};
+    
   const handleClose = () => {
     setOpen(false);
   };
@@ -35,11 +35,11 @@ export default function NewFormer() {
     <>
     <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          Customer added successfully
+          Former added successfully
         </Alert>
       </Snackbar>
     <div className="newUser">
-      <h1 className="newUserTitle">New Customer</h1>
+      <h1 className="newUserTitle">New Former</h1>
       <form className="newUserForm" onSubmit={handleSubmit(onSubmit)}>
         <div className="newUserItem">
           <label htmlFor="FirstName">FirstName</label>
