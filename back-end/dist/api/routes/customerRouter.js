@@ -25,3 +25,4 @@ router.post("/createCustomer", _controllers.createCustomer);
 router.post("/createOrder", _controllers.createOrder);
 router["delete"]("/deleteCustomer/:id", _controllers.deleteCustomer);
 router.patch("/updateCustomer/:id", _controllers.updateCustomer);
+router.patch("/incrementOwnCourse/:id", _controllers.incrementOwnCourse);

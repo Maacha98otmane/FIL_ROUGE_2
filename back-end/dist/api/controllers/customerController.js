@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateCustomer = exports.getCustomer = exports.getAllCustomers = exports.deleteCustomer = exports.createCustomer = exports.confirmEmail = void 0;
+exports.updateCustomer = exports.incrementOwnCourse = exports.getCustomer = exports.getAllCustomers = exports.deleteCustomer = exports.createCustomer = exports.confirmEmail = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -17,10 +17,7 @@ var _user2 = _interopRequireDefault(require("../models/user"));
 
 var _email = _interopRequireDefault(require("../helpers/email"));
 
-var _order = _interopRequireDefault(require("../models/order"));
-
 var createCustomer = function createCustomer(req, res) {
-  console.log(req.body);
   var _req$body = req.body,
       firstName = _req$body.firstName,
       lastName = _req$body.lastName,
@@ -164,7 +161,7 @@ exports.deleteCustomer = deleteCustomer;
 
 var updateCustomer = /*#__PURE__*/function () {
   var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res) {
-    var id, _req$body2, firstName, lastName, email, password, Address, city, zipCode, phone, costumerData, userData, customer, user;
+    var id, _req$body2, firstName, lastName, email, password, address, phone, userData, customer;
 
     return _regenerator["default"].wrap(function _callee3$(_context3) {
       while (1) {
@@ -172,55 +169,43 @@ var updateCustomer = /*#__PURE__*/function () {
           case 0:
             _context3.prev = 0;
             id = req.params.id;
-            _req$body2 = req.body, firstName = _req$body2.firstName, lastName = _req$body2.lastName, email = _req$body2.email, password = _req$body2.password, Address = _req$body2.Address, city = _req$body2.city, zipCode = _req$body2.zipCode, phone = _req$body2.phone;
-            costumerData = {
-              Address: Address,
-              city: city,
-              zipcode: zipCode,
-              phone: phone
-            };
+            _req$body2 = req.body, firstName = _req$body2.firstName, lastName = _req$body2.lastName, email = _req$body2.email, password = _req$body2.password, address = _req$body2.address, phone = _req$body2.phone;
             userData = {
               firstName: firstName,
               lastName: lastName,
               email: email,
-              password: password
+              password: password,
+              address: address,
+              phone: phone
             };
-            _context3.next = 7;
+            _context3.next = 6;
             return _customer["default"].findOneAndUpdate({
               _id: id
             }, costumerData, {
               "new": true
             });
 
-          case 7:
+          case 6:
             customer = _context3.sent;
-            _context3.next = 10;
-            return _user2["default"].findOneAndUpdate({
-              _id: id
-            }, userData, {
-              "new": true
-            });
-
-          case 10:
-            user = _context3.sent;
             return _context3.abrupt("return", res.status(400).json({
-              message: "Customer updated successfully!"
+              message: "Customer updated successfully!",
+              customer: customer
             }));
 
-          case 14:
-            _context3.prev = 14;
+          case 10:
+            _context3.prev = 10;
             _context3.t0 = _context3["catch"](0);
             res.status(400).json({
               status: false,
               message: "Customer not found"
             });
 
-          case 17:
+          case 13:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[0, 14]]);
+    }, _callee3, null, [[0, 10]]);
   }));
 
   return function updateCustomer(_x4, _x5) {
@@ -358,6 +343,55 @@ var getCustomer = /*#__PURE__*/function () {
   return function getCustomer(_x10, _x11) {
     return _ref6.apply(this, arguments);
   };
-}();
+}(); //increment owncourse by 1
+
 
 exports.getCustomer = getCustomer;
+
+var incrementOwnCourse = /*#__PURE__*/function () {
+  var _ref7 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(req, res) {
+    var id, customer;
+    return _regenerator["default"].wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.prev = 0;
+            id = req.params.id;
+            _context7.next = 4;
+            return _customer["default"].findById({
+              _id: id
+            });
+
+          case 4:
+            customer = _context7.sent;
+            customer.owncourse++;
+            _context7.next = 8;
+            return customer.save();
+
+          case 8:
+            return _context7.abrupt("return", res.json({
+              customer: customer
+            }));
+
+          case 11:
+            _context7.prev = 11;
+            _context7.t0 = _context7["catch"](0);
+            res.status(400).json({
+              status: false,
+              message: _context7.t0.message
+            });
+
+          case 14:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7, null, [[0, 11]]);
+  }));
+
+  return function incrementOwnCourse(_x12, _x13) {
+    return _ref7.apply(this, arguments);
+  };
+}();
+
+exports.incrementOwnCourse = incrementOwnCourse;

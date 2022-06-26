@@ -3,11 +3,7 @@
 var mongoose = require('mongoose');
 
 var costumerSchema = new mongoose.Schema({
-  isVerified: {
-    type: String,
-    "default": false
-  },
-  rating: {
+  owncourse: {
     type: Number,
     "default": 0
   },

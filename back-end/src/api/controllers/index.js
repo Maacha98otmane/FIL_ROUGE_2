@@ -5,7 +5,7 @@ export { getCategory ,getAllCategory, addCategory, deleteCategory, updateCategor
 
 export { getCourse ,getAllCourse, addCourse, deleteCourse, updateCourse, getRandomCourse, getCourseWithEpisodes} from "./courseController";
 
-export { createFormer, removeFormer, searchFormer, updateFormer, getAllFormers, getFormer,getFormerStatus,confirmAccount } from "./formerController";
+export { createFormer,confirmFormerEmail, deleteFormer, updateFormer,getAllFormers,getFormer } from "./formerController";
 
 export { createAdmin, removeAdmin, searchAdmin, updateAdmin, getAllAdmins, getAdmin } from "./formateurController";
 

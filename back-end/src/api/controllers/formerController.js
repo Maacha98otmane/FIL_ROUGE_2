@@ -2,7 +2,7 @@ import Former from "../models/former";
 import User from "../models/user";
 import EmailSend from "../helpers/email";
 
-const createCustomer = (req, res) => {
+const createFormer = (req, res) => {
 
     const {
         firstName,
@@ -132,7 +132,7 @@ const updateFormer = async (req, res) => {
 
 
 
-const confirmEmail = async (req, res) => {
+const confirmFormerEmail = async (req, res) => {
 
             try {
             const { id } = req.params;
@@ -151,7 +151,7 @@ const confirmEmail = async (req, res) => {
             }
 }
 //get all customers
-const getAllCustomers = async (req, res) => {
+const getAllFormers = async (req, res) => {
     try {
         const customers = await Customer.find({}).populate('user');
         return res.json({
@@ -165,7 +165,7 @@ const getAllCustomers = async (req, res) => {
     }
 }
 //get customer
-const getCustomer = async (req, res) => {
+const getFormer = async (req, res) => {
     try {
         const { id } = req.params;
         const customer = await Customer.findById({ _id: id });
@@ -190,4 +190,4 @@ const getCustomer = async (req, res) => {
 
 
 
-export {createCustomer,confirmEmail, deleteCustomer, updateCustomer,getAllCustomers,getCustomer}
+export {createFormer,confirmFormerEmail, deleteFormer, updateFormer,getAllFormers,getFormer}

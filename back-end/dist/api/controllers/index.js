@@ -27,16 +27,16 @@ Object.defineProperty(exports, "addEpisode", {
     return _episodeController.addEpisode;
   }
 });
-Object.defineProperty(exports, "confirmAccount", {
-  enumerable: true,
-  get: function get() {
-    return _formerController.confirmAccount;
-  }
-});
 Object.defineProperty(exports, "confirmEmail", {
   enumerable: true,
   get: function get() {
     return _customerController.confirmEmail;
+  }
+});
+Object.defineProperty(exports, "confirmFormerEmail", {
+  enumerable: true,
+  get: function get() {
+    return _formerController.confirmFormerEmail;
   }
 });
 Object.defineProperty(exports, "countEpisodes", {
@@ -97,6 +97,12 @@ Object.defineProperty(exports, "deleteEpisode", {
   enumerable: true,
   get: function get() {
     return _episodeController.deleteEpisode;
+  }
+});
+Object.defineProperty(exports, "deleteFormer", {
+  enumerable: true,
+  get: function get() {
+    return _formerController.deleteFormer;
   }
 });
 Object.defineProperty(exports, "deleteOrder", {
@@ -195,12 +201,6 @@ Object.defineProperty(exports, "getFormer", {
     return _formerController.getFormer;
   }
 });
-Object.defineProperty(exports, "getFormerStatus", {
-  enumerable: true,
-  get: function get() {
-    return _formerController.getFormerStatus;
-  }
-});
 Object.defineProperty(exports, "getMonthlyOrder", {
   enumerable: true,
   get: function get() {
@@ -223,6 +223,12 @@ Object.defineProperty(exports, "getUserOrder", {
   enumerable: true,
   get: function get() {
     return _orderController.getUserOrder;
+  }
+});
+Object.defineProperty(exports, "incrementOwnCourse", {
+  enumerable: true,
+  get: function get() {
+    return _customerController.incrementOwnCourse;
   }
 });
 Object.defineProperty(exports, "login", {
@@ -261,22 +267,10 @@ Object.defineProperty(exports, "removeAdmin", {
     return _formateurController.removeAdmin;
   }
 });
-Object.defineProperty(exports, "removeFormer", {
-  enumerable: true,
-  get: function get() {
-    return _formerController.removeFormer;
-  }
-});
 Object.defineProperty(exports, "searchAdmin", {
   enumerable: true,
   get: function get() {
     return _formateurController.searchAdmin;
-  }
-});
-Object.defineProperty(exports, "searchFormer", {
-  enumerable: true,
-  get: function get() {
-    return _formerController.searchFormer;
   }
 });
 Object.defineProperty(exports, "updateAdmin", {
