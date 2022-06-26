@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 const costumerSchema = new mongoose.Schema({
-  isVerified : {
-    type: String,
-    default: false,    
-  },
-  rating: {
+  owncourse: {
     type: Number,
     default: 0,
   },

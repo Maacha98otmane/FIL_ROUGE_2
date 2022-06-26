@@ -1,11 +1,9 @@
 import Customer from "../models/customer";
 import User from "../models/user";
 import EmailSend from "../helpers/email";
-import Order from "../models/order";
-
 
 const createCustomer = (req, res) => {
-    console.log(req.body)
+
     const {
         firstName,
         lastName,
@@ -105,31 +103,24 @@ const updateCustomer = async (req, res) => {
             lastName,
             email,
             password,
-            Address,
-            city,
-            zipCode,
+            address,
             phone,
         } = req.body
-
-        const costumerData = {
-            Address : Address,
-            city : city,
-            zipcode : zipCode,
-            phone : phone
-        }
 
         const userData = {
             firstName,
             lastName,
             email,
             password,
+            address,
+            phone,
         }
         
         const customer = await Customer.findOneAndUpdate({ _id: id }, costumerData, { new: true });
-        const user = await User.findOneAndUpdate({ _id: id }, userData, { new: true });
         
         return res.status(400).json({
-            message: "Customer updated successfully!"
+            message: "Customer updated successfully!",
+            customer
         });
         } catch (e) {
             res.status(400).json({
@@ -189,6 +180,23 @@ const getCustomer = async (req, res) => {
     }
 }
 
+//increment owncourse by 1
+const incrementOwnCourse = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const customer = await Customer.findById({ _id: id });
+        customer.owncourse++;
+        await customer.save();
+        return res.json({
+            customer
+        });
+    } catch (e) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        })
+    }
+}
 
 
 
@@ -199,4 +207,6 @@ const getCustomer = async (req, res) => {
 
 
 
-export {createCustomer,confirmEmail, deleteCustomer, updateCustomer,getAllCustomers,getCustomer}
+
+
+export {createCustomer,confirmEmail, deleteCustomer, updateCustomer,getAllCustomers,getCustomer,incrementOwnCourse}

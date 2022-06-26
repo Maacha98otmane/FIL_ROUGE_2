@@ -9,6 +9,7 @@ import {
     deleteCustomer,
     updateCustomer,
     getAllCustomers,
+    incrementOwnCourse,
     getCustomer
 } from "../controllers"
 
@@ -24,5 +25,6 @@ router.post("/createCustomer", createCustomer)
 router.post("/createOrder", createOrder)
 router.delete("/deleteCustomer/:id", deleteCustomer)
 router.patch("/updateCustomer/:id", updateCustomer)
+router.patch("/incrementOwnCourse/:id", incrementOwnCourse)
 
 export { router }

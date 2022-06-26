@@ -1,23 +1,13 @@
 const mongoose = require('mongoose');
 const User = require('./user')
 const formerSchema = new mongoose.Schema({
-  nameStore: {
-    type: String,
-    required: true,
-
-  },
-  status: {
-    type: String,
-    trim: true,
-    enum: {
-      values: ['Starter', 'Pro', 'Expert'],
-      message: 'is not supported'
-    },
-    default: "Starter",
-  },
   isVerified : {
     type: String,
     default: false,    
+  },
+  rating: {
+    type: Number,
+    default: 0,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
