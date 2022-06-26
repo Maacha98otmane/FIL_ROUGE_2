@@ -19,7 +19,9 @@ exports.router = router;
 //     Auth
 // } from "../middlewares"
 router.get("/confirmEmail/:id", _controllers.confirmEmail);
+router.get("/getAllCustomers", _controllers.getAllCustomers);
+router.get("/getCustomer/:id", _controllers.getCustomer);
 router.post("/createCustomer", _controllers.createCustomer);
 router.post("/createOrder", _controllers.createOrder);
-router["delete"]("/deleteCustomer/:id", Auth('SUPERADMIN'), _controllers.deleteCustomer);
+router["delete"]("/deleteCustomer/:id", _controllers.deleteCustomer);
 router.patch("/updateCustomer/:id", _controllers.updateCustomer);

@@ -10,6 +10,7 @@ import {
           categoryRouter,
           orderRouter,
           stripeRouter,
+          customerRouter,
           episodeRouter,
           cartRouter,
           adminRouter,
@@ -32,6 +33,7 @@ app.use("/api/admin", adminRouter);
 app.use("/api/category", categoryRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
+app.use("/api/customer", customerRouter);
 app.use("/api/stripe", stripeRouter);
 app.use("/api/course", courseRouter);
 app.use("/api/former", formerRouter);

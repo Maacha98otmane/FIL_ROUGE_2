@@ -135,6 +135,12 @@ Object.defineProperty(exports, "getAllCourse", {
     return _courseController.getAllCourse;
   }
 });
+Object.defineProperty(exports, "getAllCustomers", {
+  enumerable: true,
+  get: function get() {
+    return _customerController.getAllCustomers;
+  }
+});
 Object.defineProperty(exports, "getAllEpisodes", {
   enumerable: true,
   get: function get() {
@@ -169,6 +175,12 @@ Object.defineProperty(exports, "getCourseWithEpisodes", {
   enumerable: true,
   get: function get() {
     return _courseController.getCourseWithEpisodes;
+  }
+});
+Object.defineProperty(exports, "getCustomer", {
+  enumerable: true,
+  get: function get() {
+    return _customerController.getCustomer;
   }
 });
 Object.defineProperty(exports, "getEpisode", {

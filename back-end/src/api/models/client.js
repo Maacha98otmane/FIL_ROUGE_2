@@ -1,12 +1,8 @@
 const mongoose = require('mongoose');
-const costumerSchema = new mongoose.Schema({
+const clientSchema = new mongoose.Schema({
   isVerified : {
     type: String,
     default: false,    
-  },
-  rating: {
-    type: Number,
-    default: 0,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -15,6 +11,6 @@ const costumerSchema = new mongoose.Schema({
 }, {
   timestamps: true
 }, {
-  collection: "customers"
+  collection: "clients"
 })
-module.exports = mongoose.model('Costumer', costumerSchema);
+module.exports = mongoose.model('Client', clientSchema);

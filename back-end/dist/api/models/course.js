@@ -2,7 +2,6 @@
 
 var mongoose = require('mongoose');
 
-var ObjectId = mongoose.Schema.ObjectId;
 var courseSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -40,7 +39,7 @@ var courseSchema = new mongoose.Schema({
     type: String
   },
   category: {
-    type: ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Category'
   }
 }, {

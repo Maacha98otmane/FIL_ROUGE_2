@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Address: {
+  address: {
     type: String,
     required: true,
   },
@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: true,
-  }
+  },
 }, {
   timestamps: true
 },{collection:"users"});

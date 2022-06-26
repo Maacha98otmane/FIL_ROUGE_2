@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { ObjectId } = mongoose.Schema;
 
 const courseSchema = new mongoose.Schema({
     title: {
@@ -38,7 +37,7 @@ const courseSchema = new mongoose.Schema({
         type: String,
     },
     category: {
-        type: ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
     },
 }, {timestamps: true});

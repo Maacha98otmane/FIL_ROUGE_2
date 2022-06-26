@@ -11,7 +11,7 @@ export { createAdmin, removeAdmin, searchAdmin, updateAdmin, getAllAdmins, getAd
 
 export {loginAdmin,logoutAdmin} from "./Auth/auth_AdminController";
 
-export {createCustomer,confirmEmail, deleteCustomer,updateCustomer} from "./customerController";
+export {createCustomer,confirmEmail, deleteCustomer, updateCustomer,getAllCustomers,getCustomer} from "./customerController";
 
 export { getUserCart ,getAllCart, addCart, deleteCart, updateCart} from "./cartController";
 

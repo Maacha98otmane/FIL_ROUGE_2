@@ -5,26 +5,24 @@ import Order from "../models/order";
 
 
 const createCustomer = (req, res) => {
-    
-
+    console.log(req.body)
     const {
         firstName,
         lastName,
         email,
         password,
-        Address,
-        zipCode,
-        phone,
-        city
+        address,
+        phone
     } = req.body;
 
     const UserData = {
         firstName,
         lastName,
         email,
+        address,
+        phone,
         password,
         role: "CUSTOMER",
-
     }
 
     const user = new User(UserData);
@@ -35,16 +33,12 @@ const createCustomer = (req, res) => {
 
         }
         const CostumerData = {
-            Address: Address,
-            city: city,
-            zipCode : zipCode,
-            phone : phone,
             user: user._id,
             _id: user._id, 
 
         }
         const costumer = new Customer(CostumerData);
-        costumer.save(async (err, Manager) => {
+        costumer.save(async (err) => {
 
             if (err) {
                 const user = await User.findById({
@@ -55,11 +49,10 @@ const createCustomer = (req, res) => {
                 return res.status(400).send(err)
             }
             
-
             //Email Verification
             const { id } = user._id;
 
-            let subj = "Inoformation";
+            let subj = "Information";
             let msg = `confirm_email : http://localhost:3030/api/customer/confirmEmail/${id}`;
             EmailSend.mail(email, subj, msg)
             
@@ -75,7 +68,6 @@ const createCustomer = (req, res) => {
 
     })
 }
-
 //delete customer
 const deleteCustomer = async (req, res) => {
 
@@ -85,8 +77,10 @@ const deleteCustomer = async (req, res) => {
         } = req.params
   
         const customer = await Customer.findById({ _id: id })
+        const user = await User.findById({ _id: id })
 
         customer.remove()
+        user.remove()
     return res.json({
         message: "Customer deleted successfully!"
     });
@@ -165,6 +159,35 @@ const confirmEmail = async (req, res) => {
                 })
             }
 }
+//get all customers
+const getAllCustomers = async (req, res) => {
+    try {
+        const customers = await Customer.find({}).populate('user');
+        return res.json({
+            customers
+        });
+    } catch (e) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        })
+    }
+}
+//get customer
+const getCustomer = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const customer = await Customer.findById({ _id: id });
+        return res.json({
+            customer
+        });
+    } catch (e) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        })
+    }
+}
 
 
 
@@ -175,4 +198,5 @@ const confirmEmail = async (req, res) => {
 
 
 
-export {createCustomer,confirmEmail, deleteCustomer, updateCustomer}
+
+export {createCustomer,confirmEmail, deleteCustomer, updateCustomer,getAllCustomers,getCustomer}

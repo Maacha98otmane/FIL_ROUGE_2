@@ -7,7 +7,9 @@ import {
     confirmEmail,
     createOrder,
     deleteCustomer,
-    updateCustomer
+    updateCustomer,
+    getAllCustomers,
+    getCustomer
 } from "../controllers"
 
 // import {
@@ -16,9 +18,11 @@ import {
 // } from "../middlewares"
 
 router.get("/confirmEmail/:id", confirmEmail)
+router.get("/getAllCustomers", getAllCustomers)
+router.get("/getCustomer/:id", getCustomer)
 router.post("/createCustomer", createCustomer)
 router.post("/createOrder", createOrder)
-router.delete("/deleteCustomer/:id",Auth('SUPERADMIN'), deleteCustomer)
+router.delete("/deleteCustomer/:id", deleteCustomer)
 router.patch("/updateCustomer/:id", updateCustomer)
 
 export { router }

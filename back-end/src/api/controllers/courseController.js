@@ -119,6 +119,14 @@ const getCourseWithEpisodes = async (req, res) => {
         res.status(500).json(err);
     }
 }
-
+//get 3 course rating >= 4
+const getCourseRating = async (req, res) => {
+    try {
+        const courses = await Course.find({rating: {$gte: 4}}).limit(3);
+        res.status(200).json(courses);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
 
 export { getCourse ,getAllCourse, addCourse, deleteCourse, updateCourse, getRandomCourse, getCourseWithEpisodes}

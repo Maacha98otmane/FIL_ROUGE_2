@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateCustomer = exports.deleteCustomer = exports.createCustomer = exports.confirmEmail = void 0;
+exports.updateCustomer = exports.getCustomer = exports.getAllCustomers = exports.deleteCustomer = exports.createCustomer = exports.confirmEmail = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -20,19 +20,20 @@ var _email = _interopRequireDefault(require("../helpers/email"));
 var _order = _interopRequireDefault(require("../models/order"));
 
 var createCustomer = function createCustomer(req, res) {
+  console.log(req.body);
   var _req$body = req.body,
       firstName = _req$body.firstName,
       lastName = _req$body.lastName,
       email = _req$body.email,
       password = _req$body.password,
-      Address = _req$body.Address,
-      zipCode = _req$body.zipCode,
-      phone = _req$body.phone,
-      city = _req$body.city;
+      address = _req$body.address,
+      phone = _req$body.phone;
   var UserData = {
     firstName: firstName,
     lastName: lastName,
     email: email,
+    address: address,
+    phone: phone,
     password: password,
     role: "CUSTOMER"
   };
@@ -44,16 +45,12 @@ var createCustomer = function createCustomer(req, res) {
     }
 
     var CostumerData = {
-      Address: Address,
-      city: city,
-      zipCode: zipCode,
-      phone: phone,
       user: user._id,
       _id: user._id
     };
     var costumer = new _customer["default"](CostumerData);
     costumer.save( /*#__PURE__*/function () {
-      var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(err, Manager) {
+      var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(err) {
         var _user, id, subj, msg;
 
         return _regenerator["default"].wrap(function _callee$(_context) {
@@ -81,7 +78,7 @@ var createCustomer = function createCustomer(req, res) {
               case 6:
                 //Email Verification
                 id = user._id.id;
-                subj = "Inoformation";
+                subj = "Information";
                 msg = "confirm_email : http://localhost:3030/api/customer/confirmEmail/".concat(id);
 
                 _email["default"].mail(email, subj, msg);
@@ -102,7 +99,7 @@ var createCustomer = function createCustomer(req, res) {
         }, _callee);
       }));
 
-      return function (_x, _x2) {
+      return function (_x) {
         return _ref.apply(this, arguments);
       };
     }());
@@ -149,7 +146,7 @@ var deleteCustomer = /*#__PURE__*/function () {
     }, _callee2, null, [[0, 9]]);
   }));
 
-  return function deleteCustomer(_x3, _x4) {
+  return function deleteCustomer(_x2, _x3) {
     return _ref2.apply(this, arguments);
   };
 }(); // update user
@@ -218,7 +215,7 @@ var updateCustomer = /*#__PURE__*/function () {
     }, _callee3, null, [[0, 14]]);
   }));
 
-  return function updateCustomer(_x5, _x6) {
+  return function updateCustomer(_x4, _x5) {
     return _ref3.apply(this, arguments);
   };
 }();
@@ -265,9 +262,94 @@ var confirmEmail = /*#__PURE__*/function () {
     }, _callee4, null, [[0, 7]]);
   }));
 
-  return function confirmEmail(_x7, _x8) {
+  return function confirmEmail(_x6, _x7) {
     return _ref4.apply(this, arguments);
+  };
+}(); //get all customers
+
+
+exports.confirmEmail = confirmEmail;
+
+var getAllCustomers = /*#__PURE__*/function () {
+  var _ref5 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(req, res) {
+    var customers;
+    return _regenerator["default"].wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.prev = 0;
+            _context5.next = 3;
+            return _customer["default"].find({}).populate('user');
+
+          case 3:
+            customers = _context5.sent;
+            return _context5.abrupt("return", res.json({
+              customers: customers
+            }));
+
+          case 7:
+            _context5.prev = 7;
+            _context5.t0 = _context5["catch"](0);
+            res.status(400).json({
+              status: false,
+              message: _context5.t0.message
+            });
+
+          case 10:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5, null, [[0, 7]]);
+  }));
+
+  return function getAllCustomers(_x8, _x9) {
+    return _ref5.apply(this, arguments);
+  };
+}(); //get customer
+
+
+exports.getAllCustomers = getAllCustomers;
+
+var getCustomer = /*#__PURE__*/function () {
+  var _ref6 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(req, res) {
+    var id, customer;
+    return _regenerator["default"].wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.prev = 0;
+            id = req.params.id;
+            _context6.next = 4;
+            return _customer["default"].findById({
+              _id: id
+            });
+
+          case 4:
+            customer = _context6.sent;
+            return _context6.abrupt("return", res.json({
+              customer: customer
+            }));
+
+          case 8:
+            _context6.prev = 8;
+            _context6.t0 = _context6["catch"](0);
+            res.status(400).json({
+              status: false,
+              message: _context6.t0.message
+            });
+
+          case 11:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6, null, [[0, 8]]);
+  }));
+
+  return function getCustomer(_x10, _x11) {
+    return _ref6.apply(this, arguments);
   };
 }();
 
-exports.confirmEmail = confirmEmail;
+exports.getCustomer = getCustomer;

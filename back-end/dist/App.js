@@ -31,6 +31,7 @@ app.use("/api/admin", _routes.adminRouter);
 app.use("/api/category", _routes.categoryRouter);
 app.use("/api/cart", _routes.cartRouter);
 app.use("/api/order", _routes.orderRouter);
+app.use("/api/customer", _routes.customerRouter);
 app.use("/api/stripe", _routes.stripeRouter);
 app.use("/api/course", _routes.courseRouter);
 app.use("/api/former", _routes.formerRouter);

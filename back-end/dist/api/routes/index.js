@@ -27,6 +27,12 @@ Object.defineProperty(exports, "courseRouter", {
     return _courseRouter.router;
   }
 });
+Object.defineProperty(exports, "customerRouter", {
+  enumerable: true,
+  get: function get() {
+    return _customerRouter.router;
+  }
+});
 Object.defineProperty(exports, "episodeRouter", {
   enumerable: true,
   get: function get() {
@@ -57,6 +63,8 @@ var _adminRouter = require("./adminRouter");
 var _cartRouter = require("./cartRouter");
 
 var _orderRouter = require("./orderRouter");
+
+var _customerRouter = require("./customerRouter");
 
 var _stripeRouter = require("./stripeRouter");
 

@@ -355,6 +355,46 @@ var getCourseWithEpisodes = /*#__PURE__*/function () {
   return function getCourseWithEpisodes(_x13, _x14) {
     return _ref7.apply(this, arguments);
   };
-}();
+}(); //get 3 course rating >= 4
+
 
 exports.getCourseWithEpisodes = getCourseWithEpisodes;
+
+var getCourseRating = /*#__PURE__*/function () {
+  var _ref8 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(req, res) {
+    var courses;
+    return _regenerator["default"].wrap(function _callee8$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            _context8.prev = 0;
+            _context8.next = 3;
+            return _course["default"].find({
+              rating: {
+                $gte: 4
+              }
+            }).limit(3);
+
+          case 3:
+            courses = _context8.sent;
+            res.status(200).json(courses);
+            _context8.next = 10;
+            break;
+
+          case 7:
+            _context8.prev = 7;
+            _context8.t0 = _context8["catch"](0);
+            res.status(500).json(_context8.t0);
+
+          case 10:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    }, _callee8, null, [[0, 7]]);
+  }));
+
+  return function getCourseRating(_x15, _x16) {
+    return _ref8.apply(this, arguments);
+  };
+}();
