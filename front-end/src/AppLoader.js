@@ -14,18 +14,46 @@ import {
 } from "react-router-dom";
 
 //Screen
-import Sidebar from "./screens/sidebar";
-import HomePage from "./screens/home";
-import Rightbar from "./screens/rightbar";
-import CoursePage from "./screens/course";
-import DiscoverPage from "./screens/discover";
-import CategoriesPage from "./screens/categories";
-import MyCoursesPage from "./screens/mycourses";
-import AdminHome from './screens/Admin/adminHome';
-import AdminCat from './screens/Admin/adminCat';
+import Sidebar from "./screens/User/sidebar";
+import HomePage from "./screens/User/home";
+import Rightbar from "./screens/User/rightbar";
+import CoursePage from "./screens/User/course";
+import DiscoverPage from "./screens/User/discover";
+import CategoriesPage from "./screens/User/categories";
+import MyCoursesPage from "./screens/User/mycourses";
+// import AdminHome from './screens/Admin/adminHome';
+// import AdminCat from './screens/Admin/adminCat';
 import Accueil from './screens/accueil';
+import AccountPage from "./screens/User/oauth";
 
-import AccountPage from "./screens/oauth";
+//import screen admin
+import AdminSidebar from "./screens/Admin/components/sidebar/Sidebar";
+import AdminTopbar from "./screens/Admin/components/topbar/Topbar";
+import AdminHome from "./screens/Admin/pages/home/Home";
+import AdminCustomersList from "./screens/Admin/pages/customerList/CustomerList";
+import AdminCustomer from "./screens/Admin/pages/customer/Customer";
+import AdminNewCustomer from "./screens/Admin/pages/newCustomer/NewCustomer";
+import AdminFormersList from "./screens/Admin/pages/formerList/FormerList";
+import AdminFormer from "./screens/Admin/pages/former/Former";
+import AdminNewFormer from "./screens/Admin/pages/newFormer/NewFormer";
+import AdminProductList from "./screens/Admin/pages/productList/ProductList";
+import AdminProduct from "./screens/Admin/pages/product/Product";
+import AdminNewProduct from "./screens/Admin/pages/newProduct/NewProduct";
+
+//import screen former
+import FormerSidebar from "./screens/Former/components/sidebar/Sidebar";
+import FormerTopbar from "./screens/Former/components/topbar/Topbar";
+import FormerHome from "./screens/Former/pages/home/Home";
+import FormerUserList from "./screens/Former/pages/userList/UserList";
+import FormerUser from "./screens/Former/pages/user/User";
+import FormerNewUser from "./screens/Former/pages/newUser/NewUser";
+import FormerProductList from "./screens/Former/pages/productList/ProductList";
+import FormerProduct from "./screens/Former/pages/product/Product";
+import FormerNewProduct from "./screens/Former/pages/newProduct/NewProduct";
+
+
+
+
 
 import fire_base from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -98,8 +126,76 @@ function AppLoader(){
       const AdminPath = ({match}) => {
         return(
           <HashRouter>
-            <Route path="/" exact component={AdminHome} />
-            <Route path="/categories" component={AdminCat} />
+            <AdminTopbar />
+      <div className="container">
+        <AdminSidebar />
+        <Switch>
+          <Route exact path="/">
+            <AdminHome />
+          </Route>
+          <Route path="/customers">
+            <AdminCustomersList />
+          </Route>
+          <Route path="/customer/:userId">
+            <AdminCustomer />
+          </Route>
+          <Route path="/newCustomer">
+            <AdminNewCustomer />
+          </Route>
+          <Route path="/formers">
+            <AdminFormersList />
+          </Route>
+          <Route path="/former/:userId">
+            <AdminFormer />
+          </Route>
+          <Route path="/newFormer">
+            <AdminNewFormer />
+          </Route>
+          <Route path="/products">
+            <AdminProductList />
+          </Route>
+          <Route path="/product/:productId">
+            <AdminProduct />
+          </Route>
+          <Route path="/newproduct">
+            <AdminNewProduct />
+          </Route>
+        </Switch>
+      </div>
+          </HashRouter>
+        );
+      };
+
+      const FormerPath = ({match}) => {
+        return(
+          <HashRouter>
+            <FormerTopbar />
+      <div className="container">
+        <FormerSidebar />
+        <Switch>
+          <Route exact path="/">
+            <FormerHome />
+          </Route>
+          <Route path="/users">
+            <FormerUserList />
+          </Route>
+          <Route path="/user/:userId">
+            <FormerUser />
+          </Route>
+          <Route path="/newUser">
+            <FormerNewUser />
+          </Route>
+          <Route path="/products">
+            <FormerProductList />
+          </Route>
+          <Route path="/product/:productId">
+            <FormerProduct />
+          </Route>
+          <Route path="/newproduct">
+            <FormerNewProduct />
+          </Route>
+        </Switch>
+      </div>
           </HashRouter>
         );
       };
@@ -111,11 +207,14 @@ function AppLoader(){
                 context => {
                     return (
                         context.appLoaded() ? 
-                        <div className="App flex">      
+                        <div className="App">      
                             <BrowserRouter>
                             <Route path="/" exact component={Accueil} />
+                            <div className='flex'>
                             <Route path='/user' component={UserPath} />
+                            </div>
                             <Route path='/admin' component={AdminPath} />
+                            <Route path='/former' component={FormerPath} />
                             </BrowserRouter>
 
                         </div>

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import Course1 from "../ui/course-1.png";
-import Course2 from "../ui/course-2.jpg";
+import Course1 from "../../ui/course-1.png";
+import Course2 from "../../ui/course-2.jpg";
 import {
     NavLink,    
 } from "react-router-dom";

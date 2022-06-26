@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import countriesList from "./countries";
-import NumericInput from "../comps/NumericInput";
-import Cover from "../comps/cover";
-import Toast from "../helpers/functions";
+import NumericInput from "../../comps/NumericInput";
+import Cover from "../../comps/cover";
+import Toast from "../../helpers/functions";
 
 
 function AccountPage(props){

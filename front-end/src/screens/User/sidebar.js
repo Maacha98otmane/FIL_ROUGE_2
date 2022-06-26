@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from '../ui/logo-coral.svg';
+import logo from '../../ui/logo-coral.svg';
 
 import {
     NavLink,    

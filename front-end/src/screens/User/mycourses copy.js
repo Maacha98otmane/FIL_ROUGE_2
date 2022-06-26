@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {getAllArticle} from "../helpers/api/mycourses";
+import {getAllArticle} from "../../helpers/api/mycourses";
 import {useQuery} from "react-query"; // get data && use mutation => post request 
 // import {useQueryClient} from "react-query"; // refetch & invalidate cache using only in post & delete
 
