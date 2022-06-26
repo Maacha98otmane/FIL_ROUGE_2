@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 import {
-    createAdmin, removeAdmin, searchAdmin, updateAdmin, getAllAdmins, getAdmin,loginAdmin,logoutAdmin
+    loginAdmin,logoutAdmin
 } from "../controllers"
 
 // import {
@@ -11,11 +11,6 @@ import {
 //     Auth
 // } from "../middlewares"
 router.post("/login", loginAdmin)
-router.get("/getOne/:id", getAdmin)
-router.get("/getAll", getAllAdmins)
-router.post("/create", createAdmin)
-router.delete("/delete/:id", removeAdmin)
-router.patch("/update/:id", updateAdmin)
 router.get("/logout", logoutAdmin)
 
 

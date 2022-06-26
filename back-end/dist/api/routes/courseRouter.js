@@ -24,4 +24,3 @@ router.get("/getCourseWithEpisodes/:id", _controllers.getCourseWithEpisodes);
 router.get("/getAll", _controllers.getAllCourse);
 router.post("/create", _controllers.addCourse);
 router["delete"]("/delete/:id", _controllers.deleteCourse);
-router.patch("/update/:id", _controllers.updateCourse);

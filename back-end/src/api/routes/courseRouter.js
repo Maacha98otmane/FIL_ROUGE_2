@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 import {
-    getCourse ,getAllCourse, addCourse, deleteCourse, updateCourse, getRandomCourse, getCourseWithEpisodes
+    getCourse ,getAllCourse, addCourse, deleteCourse, getRandomCourse, getCourseWithEpisodes
 } from "../controllers"
 
 // import {
@@ -17,6 +17,5 @@ router.get("/getCourseWithEpisodes/:id", getCourseWithEpisodes)
 router.get("/getAll", getAllCourse)
 router.post("/create", addCourse)
 router.delete("/delete/:id", deleteCourse)
-router.patch("/update/:id", updateCourse)
 
 export { router }

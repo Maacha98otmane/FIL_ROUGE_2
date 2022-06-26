@@ -19,9 +19,4 @@ exports.router = router;
 //     Auth
 // } from "../middlewares"
 router.post("/login", _controllers.loginAdmin);
-router.get("/getOne/:id", _controllers.getAdmin);
-router.get("/getAll", _controllers.getAllAdmins);
-router.post("/create", _controllers.createAdmin);
-router["delete"]("/delete/:id", _controllers.removeAdmin);
-router.patch("/update/:id", _controllers.updateAdmin);
 router.get("/logout", _controllers.logoutAdmin);

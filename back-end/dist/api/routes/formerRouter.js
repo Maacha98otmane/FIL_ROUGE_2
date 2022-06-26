@@ -11,15 +11,17 @@ var _express = _interopRequireDefault(require("express"));
 
 var _controllers = require("../controllers");
 
-var _middlewares = require("../middlewares");
-
 var router = _express["default"].Router();
 
 exports.router = router;
-router.get("/getOne/:id", _controllers.getFormer);
-router.get("/getAll", (0, _middlewares.Auth)('ADMIN'), _controllers.getAllFormers);
-router.get("/getFormerStatus", (0, _middlewares.Auth)('ADMIN'), _controllers.getFormerStatus);
-router.post("/create", _controllers.createFormer);
-router["delete"]("/delete/:id", (0, _middlewares.Auth)('ADMIN'), _controllers.removeFormer);
-router.patch("/update/:id", _controllers.updateFormer);
-router.post("/confirmAccount/:id", _controllers.confirmAccount);
+// import {
+//     Auth
+// } from "../middlewares"
+router.post("/confirmFormerEmail/:id", _controllers.confirmFormerEmail);
+router.get("/getAllFormers", _controllers.getAllFormers);
+router.get("/getTopFormersByRating", _controllers.getTopFormersByRating);
+router.get("/getFormer/:id", _controllers.getFormer);
+router.post("/createFormer", _controllers.createFormer);
+router["delete"]("/deleteFormer/:id", _controllers.deleteFormer);
+router.patch("/updateFormer/:id", _controllers.updateFormer);
+router.patch("/updateRating/:id", _controllers.updateRating);

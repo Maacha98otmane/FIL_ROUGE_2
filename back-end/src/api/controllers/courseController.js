@@ -19,42 +19,39 @@ const getCourse = async (req, res) => {
     
 }
 
-const getAllCourse = async (req, res) => {
-    const qNew = req.query.new;
-    const qCategory = req.query.category;
-    try {
-      let courses;
-  
-      if (qNew) {
-        courses = await Course.find().sort({ createdAt: -1 }).limit(1).populate("category").populate("brand").populate("store_id");
-      } else if (qCategory) {
-        courses = await Course.find({
-          category: {
-             $in : await Category.findOne({ name: qCategory }).then(category => {
-                return category._id;
-            })
-          },
-        }).populate("category").populate("brand").populate("store_id");
-      } else {
-        courses = await Course.find().populate("category").populate("brand").populate("store_id");   
-      }
-  
-      res.status(200).json(courses);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-    
-} 
-
 const addCourse = async (req, res) => {
-
-    const newCourse = new Course(req.body);
-
+    const { title, description, price, hours, category } = req.body;
+    const { photo } = req.files;
+    const slug = title.replace(/\s+/g, '-').toLowerCase();
+    const newCourse = new Course({
+        title,
+        description,
+        price,
+        hours,
+        category,
+        slug,
+        photo
+    });
     try {
-      const course = await newCourse.save();
-      res.status(200).json(course);
+        const doc = await newCourse.save();
+        return res.status(200).json({
+            status: true,
+            message: doc
+        });
     } catch (err) {
-      res.status(500).json(err);
+        return res.status(400).json({
+            status: false,
+            message: err.message
+        });
+    }
+}
+
+const getAllCourse = async (req, res) => {
+    try {
+        const courses = await Course.find({});
+        res.status(200).json(courses);
+    } catch (err) {
+        res.status(500).json(err);
     }
 }
       
@@ -69,25 +66,6 @@ const deleteCourse = async (req, res) => {
         res.status(200).json({
            status: true,
            message: "deleted successfully"
-        })
-     } catch (e) {
-        res.status(400).json({
-           status: false,
-           message: e.message
-        })
-     }
-}
-
-const updateCourse = async (req, res) => {
-
-    try {
-        const { id } = req.params;
-        const { name } = req.body;
-        await Course.findOneAndUpdate({id}, {name});
-
-        res.status(200).json({
-           status: true,
-           message: "updated successfully"
         })
      } catch (e) {
         res.status(400).json({
@@ -129,4 +107,4 @@ const getCourseRating = async (req, res) => {
     }
 }
 
-export { getCourse ,getAllCourse, addCourse, deleteCourse, updateCourse, getRandomCourse, getCourseWithEpisodes}
+export { getCourse ,getAllCourse, addCourse, deleteCourse, getRandomCourse, getCourseWithEpisodes}

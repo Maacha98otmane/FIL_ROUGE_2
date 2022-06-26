@@ -90,7 +90,6 @@ const deleteFormer = async (req, res) => {
      }
 
 }
-
 // update Former
 const updateFormer = async (req, res) => {
     try {
@@ -110,33 +109,31 @@ const updateFormer = async (req, res) => {
         const userData = {
             firstName,
             lastName,
-            address : address,
-            phone : phone,
+            address,
+            phone,
             email,
             password,
         }
         
-        const customer = await Customer.findOneAndUpdate({ _id: id }, costumerData, { new: true });
-        const user = await User.findOneAndUpdate({ _id: id }, userData, { new: true });
+        const former = await Former.findOneAndUpdate({ _id: id }, userData, { new: true });
         
         return res.status(400).json({
-            message: "Customer updated successfully!"
+            message: "Former updated successfully!",
+            former
         });
         } catch (e) {
             res.status(400).json({
                 status: false,
-                message: "Customer not found"
+                message: "Former not found"
             })
         }
 }
-
-
 
 const confirmFormerEmail = async (req, res) => {
 
             try {
             const { id } = req.params;
-            await Customer.findOneAndUpdate({id}, {"isVerified":true});
+            await User.findOneAndUpdate({id}, {"isVerified":true});
 
             res.status(200).json({
                 status: true,
@@ -153,9 +150,9 @@ const confirmFormerEmail = async (req, res) => {
 //get all customers
 const getAllFormers = async (req, res) => {
     try {
-        const customers = await Customer.find({}).populate('user');
+        const formers = await Former.find({}).populate('user');
         return res.json({
-            customers
+            formers
         });
     } catch (e) {
         res.status(400).json({
@@ -168,9 +165,41 @@ const getAllFormers = async (req, res) => {
 const getFormer = async (req, res) => {
     try {
         const { id } = req.params;
-        const customer = await Customer.findById({ _id: id });
+        const former = await Former.findById({ _id: id });
         return res.json({
-            customer
+            former
+        });
+    } catch (e) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        })
+    }
+}
+//update rating
+const updateRating = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { rating } = req.body;
+        const former = await Former.findById({ _id: id });
+        former.rating = rating;
+        former.save();
+        return res.json({
+            former
+        });
+    } catch (e) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        })
+    }
+}
+//get all formers by rating >=4
+const getTopFormersByRating = async (req, res) => {
+    try {
+        const topFormers = await Former.find({ rating: { $gte: 4 } }).populate('user');
+        return res.json({
+            topFormers
         });
     } catch (e) {
         res.status(400).json({
@@ -180,14 +209,4 @@ const getFormer = async (req, res) => {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-export {createFormer,confirmFormerEmail, deleteFormer, updateFormer,getAllFormers,getFormer}
+export {createFormer,confirmFormerEmail, deleteFormer, updateFormer,getAllFormers,getFormer,getTopFormersByRating,updateRating}

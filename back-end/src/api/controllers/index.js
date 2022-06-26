@@ -3,11 +3,9 @@ export {login,logout} from "./Auth/auth_UserController"
 
 export { getCategory ,getAllCategory, addCategory, deleteCategory, updateCategory} from "./categoryController";
 
-export { getCourse ,getAllCourse, addCourse, deleteCourse, updateCourse, getRandomCourse, getCourseWithEpisodes} from "./courseController";
+export { getCourse ,getAllCourse, addCourse, deleteCourse, getRandomCourse, getCourseWithEpisodes } from "./courseController";
 
-export { createFormer,confirmFormerEmail, deleteFormer, updateFormer,getAllFormers,getFormer } from "./formerController";
-
-export { createAdmin, removeAdmin, searchAdmin, updateAdmin, getAllAdmins, getAdmin } from "./formateurController";
+export {createFormer,confirmFormerEmail, deleteFormer, updateFormer,getAllFormers,getFormer,getTopFormersByRating,updateRating} from "./formerController";
 
 export {loginAdmin,logoutAdmin} from "./Auth/auth_AdminController";
 
