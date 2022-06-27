@@ -176,15 +176,6 @@ function AppLoader(){
           <Route exact path="/">
             <FormerHome />
           </Route>
-          <Route path="/users">
-            <FormerUserList />
-          </Route>
-          <Route path="/user/:userId">
-            <FormerUser />
-          </Route>
-          <Route path="/newUser">
-            <FormerNewUser />
-          </Route>
           <Route path="/products">
             <FormerProductList />
           </Route>

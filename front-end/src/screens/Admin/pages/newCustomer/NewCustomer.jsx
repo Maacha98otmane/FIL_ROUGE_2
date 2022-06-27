@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import {addCustomer} from "../../../../helpers/api/customer";
 import {useMutation} from "react-query"; // get data && use mutation => post request 
 import Snackbar from '@mui/material/Snackbar';
+import {Redirect} from "react-router-dom";
 import MuiAlert from '@mui/material/Alert';
 import "./newCustomer.css";
 
@@ -26,6 +27,9 @@ export default function NewCustomer() {
   };
 
   const [open, setOpen] = React.useState(false);
+
+  if (addCustomerMutation.isSuccess) {
+    return <Redirect to="/customers" />};
 
   const handleClose = () => {
     setOpen(false);

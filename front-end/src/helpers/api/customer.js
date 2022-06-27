@@ -15,6 +15,16 @@ export const getAllCustomers = async () => {
 export const deleteCustomer = async ({id}) => {
     return await customerApi.delete(`customer/deleteCustomer/${id}`, id);
 }
+
+export const countCustomers = async () => {
+    const response = await customerApi.get('customer/countCustomers');
+    return response.data;
+}
+export const getCustomer = async (id) => {
+    const response = await customerApi.get(`customer/getCustomer/${id}`);
+    console.log(response.data.customer);
+    return response.data.customer;
+}
 // export const updateCustomer = async (data) => {
 //     return await customerApi.patch(`customer/updateCustomer/${data.id}`, data);
 // }

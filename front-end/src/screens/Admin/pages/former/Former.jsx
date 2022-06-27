@@ -13,8 +13,8 @@ export default function Former() {
   return (
     <div className="user">
       <div className="userTitleContainer">
-        <h1 className="userTitle">Edit User</h1>
-        <Link to="/newuser">
+        <h1 className="userTitle">Edit Former</h1>
+        <Link to="/newFormer">
           <button className="userAddButton">Create</button>
         </Link>
       </div>

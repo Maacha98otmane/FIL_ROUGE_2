@@ -15,6 +15,12 @@ export const getAllFormers = async () => {
 export const deleteFormer = async ({id}) => {
     return await formerApi.delete(`former/deleteFormer/${id}`, id);
 }
+
+export const countFormers = async () => {
+    const response = await formerApi.get('former/countFormers');
+    return response.data;
+
+}
 // export const updateFormer = async (data) => {
 //     return await formerApi.patch(`former/updateFormer/${data.id}`, data);
 // }

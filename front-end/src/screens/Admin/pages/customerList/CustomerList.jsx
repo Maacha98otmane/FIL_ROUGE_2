@@ -50,7 +50,7 @@ export default function CustomerList() {
   const classes = useStyles();
   const queryClient = useQueryClient();
 
-  const [id, setId] = useState('');
+  const [user, setUser] = useState('');
 
 
   const { 
@@ -58,6 +58,7 @@ export default function CustomerList() {
     isError, 
     data=[],
   } = useQuery('customerList', getAllCustomers);
+  console.log(data);
 
   const removeCustomerMutation = useMutation(deleteCustomer, {
   onSuccess: () => {
@@ -72,10 +73,10 @@ export default function CustomerList() {
         <Box display="flex">
           <Box flexGrow={1}>
             <Typography component="h2" variant="h6" color="primary" gutterBottom>
-              Responsable
+              Customer List
             </Typography>
           </Box>
-          <Link to="/newuser">
+          <Link to="/newcustomer">
           <Button variant="contained" color="primary">
                 CREATE
           </Button>
@@ -88,6 +89,7 @@ export default function CustomerList() {
               <TableCell align="center">Avatar</TableCell>
               <TableCell align="left">Full Name</TableCell>
               <TableCell align="left">Email</TableCell>
+              <TableCell align="left">Number of courses</TableCell>
               <TableCell align="left">createdAt</TableCell>
               <TableCell align="center">Action</TableCell>
             </TableRow>
@@ -103,12 +105,16 @@ export default function CustomerList() {
                 </TableCell>
                 <TableCell align="left">{customer.user.firstName} {customer.user.lastName}</TableCell>
                 <TableCell align="left">{customer.user.email}</TableCell> 
+                <TableCell align="left">{customer.owncourse}</TableCell> 
                 <TableCell align="left">{customer.user.createdAt}</TableCell> 
                 <TableCell align="center">
                   <ButtonGroup  color="primary" aria-label="outlined primary button group">
-                  <Link to={"/user/" + customer._id}>
+                  <Link to={"/customer/"+ customer._id}>
                     <EditIcon/>
                   </Link>
+                  {/* <Button variant="text">
+                    <EditIcon onClick={() => setUser(customer)} >Edit</EditIcon>
+                  </Button> */}
                   <Button variant="text">
                     <DeleteIcon onClick={() => removeCustomerMutation.mutate({id:customer._id})} >Del</DeleteIcon>
                   </Button>

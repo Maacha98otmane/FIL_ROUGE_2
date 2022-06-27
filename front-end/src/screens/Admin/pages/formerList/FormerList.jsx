@@ -1,5 +1,4 @@
-import "./formerList.css";
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
@@ -15,13 +14,14 @@ import TableRow from '@material-ui/core/TableRow';
 import Avatar from '@material-ui/core/Avatar';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
+import StarIcon from '@mui/icons-material/Star';
 import CircularProgress from '@mui/material/CircularProgress';
 import MuiAlert from '@mui/material/Alert';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useQuery, useMutation} from "react-query"; // get data && use mutation => post request
 import {useQueryClient} from "react-query"; 
-import { getAllCustomers,deleteCustomer } from "../../../../helpers/api/customer";
+import { getAllFormers,deleteFormer } from "../../../../helpers/api/former";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -50,18 +50,15 @@ export default function FormerList() {
   const classes = useStyles();
   const queryClient = useQueryClient();
 
-  const [id, setId] = useState('');
-
-
   const { 
     isLoading, 
     isError, 
     data=[],
-  } = useQuery('customerList', getAllCustomers);
+  } = useQuery('formerList', getAllFormers);
 
-  const removeCustomerMutation = useMutation(deleteCustomer, {
+  const removeFormerMutation = useMutation(deleteFormer, {
   onSuccess: () => {
-      queryClient.invalidateQueries('customerList');
+      queryClient.invalidateQueries('formerList');
   }
   });
 
@@ -72,7 +69,7 @@ export default function FormerList() {
         <Box display="flex">
           <Box flexGrow={1}>
             <Typography component="h2" variant="h6" color="primary" gutterBottom>
-              Formers
+              Formers List
             </Typography>
           </Box>
           <Link to="/newFormer">
@@ -88,29 +85,33 @@ export default function FormerList() {
               <TableCell align="center">Avatar</TableCell>
               <TableCell align="left">Full Name</TableCell>
               <TableCell align="left">Email</TableCell>
+              <TableCell align="left">Rating</TableCell>
               <TableCell align="left">createdAt</TableCell>
               <TableCell align="center">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
           {isLoading ? <CircularProgress /> : isError ? <Alert severity="error">This is an error message!</Alert>:
-            data.map((customer) => (
-              <TableRow key={customer._id}>
+            data.map((former) => (
+              <TableRow key={former._id}>
                 <TableCell align="center">
                   <Box display="flex" justifyContent="center">
-                    <Avatar src={customer.avatar} />
+                    <Avatar src={former.avatar} />
                   </Box>
                 </TableCell>
-                <TableCell align="left">{customer.user.firstName} {customer.user.lastName}</TableCell>
-                <TableCell align="left">{customer.user.email}</TableCell> 
-                <TableCell align="left">{customer.user.createdAt}</TableCell> 
+                <TableCell align="left">{former.user.firstName} {former.user.lastName}</TableCell>
+                <TableCell align="left">{former.user.email}</TableCell> 
+                <TableCell align="left">{former.rating} <StarIcon sx={{color:"#FFD700"}}/></TableCell> 
+                <TableCell align="left">{former.user.createdAt}</TableCell> 
                 <TableCell align="center">
                   <ButtonGroup  color="primary" aria-label="outlined primary button group">
-                  <Link to={"/former/" + customer._id}>
+                  <Button variant="text">
+                  <Link to={"/former/" + former._id}>
                     <EditIcon/>
                   </Link>
+                  </Button>  
                   <Button variant="text">
-                    <DeleteIcon onClick={() => removeCustomerMutation.mutate({id:customer._id})} >Del</DeleteIcon>
+                    <DeleteIcon onClick={() => removeFormerMutation.mutate({id:former._id})} >Del</DeleteIcon>
                   </Button>
                   </ButtonGroup>
                 </TableCell>

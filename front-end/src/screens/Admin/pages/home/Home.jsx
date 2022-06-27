@@ -5,11 +5,14 @@ import { userData } from "../../dummyData";
 import WidgetSm from "../../components/widgetSm/WidgetSm";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
 
+
+
 export default function Home() {
+
   return (
     <div className="home">
       <FeaturedInfo />
-      <Chart data={userData} title="User Analytics" grid dataKey="Active User"/>
+      <Chart data={userData} title="Courses Analytics" grid dataKey="Total Buying"/>
       <div className="homeWidgets">
         <WidgetSm/>
         <WidgetLg/>

@@ -1,10 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import {addCustomer} from "../../../../helpers/api/customer";
+import {addFormer} from "../../../../helpers/api/former";
 import {useMutation} from "react-query"; // get data && use mutation => post request 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import {Link, Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import "./newFormer.css";
 
 
@@ -15,16 +15,16 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 export default function NewFormer() {
   const { register, handleSubmit,reset, formState: { errors } } = useForm();
 
-  const addCustomerMutation = useMutation(addCustomer);
+  const addFormerMutation = useMutation(addFormer);
   
 
   const onSubmit = (data) => {
-    addCustomerMutation.mutate(data)
+    addFormerMutation.mutate(data)
     reset();
   };
   const [open, setOpen] = React.useState(false);
 
-  if (addCustomerMutation.isSuccess) {
+  if (addFormerMutation.isSuccess) {
     return <Redirect to="/formers" />};
     
   const handleClose = () => {

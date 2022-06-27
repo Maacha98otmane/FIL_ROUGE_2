@@ -1,65 +1,65 @@
 export const userData = [
     {
-      name: "Jan",
-      "Active User": 4000,
+      Former: "Otmane",
+      "Total Buying": 40,
     },
     {
-      name: "Feb",
-      "Active User": 3000,
+      Former: "Simo",
+      "Total Buying": 8,
     },
     {
-      name: "Mar",
-      "Active User": 5000,
+      Former: "Salah",
+      "Total Buying": 9,
     },
     {
-      name: "Apr",
-      "Active User": 4000,
+      Former: "Hicham",
+      "Total Buying": 16,
     },
     {
-      name: "May",
-      "Active User": 3000,
+      Former: "Ayoub",
+      "Total Buying": 9,
     },
     {
-      name: "Jun",
-      "Active User": 2000,
+      Former: "Anwar",
+      "Total Buying": 20,
     },
     {
-      name: "Jul",
-      "Active User": 4000,
+      Former: "Achraf",
+      "Total Buying": 11,
     },
     {
-      name: "Agu",
-      "Active User": 3000,
+      Former: "Imane",
+      "Total Buying": 8,
     },
     {
-      name: "Sep",
-      "Active User": 4000,
+      Former: "Leila",
+      "Total Buying": 12,
     },
     {
-      name: "Oct",
-      "Active User": 1000,
+      Former: "Kenza",
+      "Total Buying": 10,
     },
     {
-      name: "Nov",
-      "Active User": 4000,
+      Former: "Brahim",
+      "Total Buying": 9,
     },
     {
-      name: "Dec",
-      "Active User": 3000,
+      Former: "Kawtar",
+      "Total Buying": 3,
     },
   ];
 
   export const productData = [
     {
-      name: "Jan",
+      Former: "Jan",
       "Sales": 4000,
     },
     {
-      name: "Feb",
+      Former: "Feb",
       "Sales": 3000,
     },
     {
-      name: "Mar",
+      Former: "Mar",
       "Sales": 5000,
     },
   ];
@@ -67,7 +67,7 @@ export const userData = [
   export const userRows = [
     {
       id: 1,
-      username: "Jon Snow",
+      userFormer: "Jon Snow",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -76,7 +76,7 @@ export const userData = [
     },
     {
       id: 2,
-      username: "Jon Snow",
+      userFormer: "Jon Snow",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -85,7 +85,7 @@ export const userData = [
     },
     {
       id: 3,
-      username: "Jon Snow",
+      userFormer: "Jon Snow",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -94,7 +94,7 @@ export const userData = [
     },
     {
       id: 4,
-      username: "Jon Snow",
+      userFormer: "Jon Snow",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -103,7 +103,7 @@ export const userData = [
     },
     {
       id: 5,
-      username: "Jon Snow",
+      userFormer: "Jon Snow",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -112,7 +112,7 @@ export const userData = [
     },
     {
       id: 6,
-      username: "Jon Snow",
+      userFormer: "Jon Snow",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -121,7 +121,7 @@ export const userData = [
     },
     {
       id: 7,
-      username: "Jon Snow",
+      userFormer: "Jon Snow",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -130,7 +130,7 @@ export const userData = [
     },
     {
       id: 8,
-      username: "Jon Snow",
+      userFormer: "Jon Snow",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -139,7 +139,7 @@ export const userData = [
     },
     {
       id: 9,
-      username: "Jon Snow",
+      userFormer: "Jon Snow",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -148,7 +148,7 @@ export const userData = [
     },
     {
       id: 10,
-      username: "Jon Snow",
+      userFormer: "Jon Snow",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -160,7 +160,7 @@ export const userData = [
   export const productRows = [
     {
       id: 1,
-      name: "Apple Airpods",
+      Former: "Apple Airpods",
       img:
         "https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       stock: 123,
@@ -169,7 +169,7 @@ export const userData = [
     },
     {
       id: 2,
-      name: "Apple Airpods",
+      Former: "Apple Airpods",
       img:
         "https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       stock: 123,
@@ -178,7 +178,7 @@ export const userData = [
     },
     {
       id: 3,
-      name: "Apple Airpods",
+      Former: "Apple Airpods",
       img:
         "https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       stock: 123,
@@ -187,7 +187,7 @@ export const userData = [
     },
     {
       id: 4,
-      name: "Apple Airpods",
+      Former: "Apple Airpods",
       img:
         "https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       stock: 123,
@@ -196,7 +196,7 @@ export const userData = [
     },
     {
       id: 5,
-      name: "Apple Airpods",
+      Former: "Apple Airpods",
       img:
         "https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       stock: 123,
@@ -205,7 +205,7 @@ export const userData = [
     },
     {
       id: 6,
-      name: "Apple Airpods",
+      Former: "Apple Airpods",
       img:
         "https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       stock: 123,
@@ -214,7 +214,7 @@ export const userData = [
     },
     {
       id: 7,
-      name: "Apple Airpods",
+      Former: "Apple Airpods",
       img:
         "https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       stock: 123,
@@ -223,7 +223,7 @@ export const userData = [
     },
     {
       id: 8,
-      name: "Apple Airpods",
+      Former: "Apple Airpods",
       img:
         "https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       stock: 123,
@@ -232,7 +232,7 @@ export const userData = [
     },
     {
       id: 9,
-      name: "Apple Airpods",
+      Former: "Apple Airpods",
       img:
         "https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       stock: 123,
@@ -241,7 +241,7 @@ export const userData = [
     },
     {
       id: 10,
-      name: "Apple Airpods",
+      Former: "Apple Airpods",
       img:
         "https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       stock: 123,
