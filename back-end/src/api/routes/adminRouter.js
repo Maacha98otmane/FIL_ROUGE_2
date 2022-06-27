@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 import {
-    loginAdmin,logoutAdmin
+    loginAdmin,logoutAdmin,signup
 } from "../controllers"
 
 // import {
@@ -11,6 +11,7 @@ import {
 //     Auth
 // } from "../middlewares"
 router.post("/login", loginAdmin)
+router.post("/signup", signup)
 router.get("/logout", logoutAdmin)
 
 

@@ -7,7 +7,7 @@ export const createToken = (payload = null, role = null) => {
   if (!role) return null;
   switch (role) {
     case "ADMIN":
-      return jwt.sign(payload, process.env.SECRET_KEY_MANAGER, {
+      return jwt.sign(payload, process.env.SECRET_KEY_ADMIN, {
         expiresIn: "1h",
       });
     case "FORMER":

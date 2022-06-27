@@ -19,4 +19,5 @@ exports.router = router;
 //     Auth
 // } from "../middlewares"
 router.post("/login", _controllers.loginAdmin);
+router.post("/signup", _controllers.signup);
 router.get("/logout", _controllers.logoutAdmin);

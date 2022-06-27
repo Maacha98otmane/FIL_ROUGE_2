@@ -267,6 +267,12 @@ Object.defineProperty(exports, "payment", {
     return _stripeController.payment;
   }
 });
+Object.defineProperty(exports, "signup", {
+  enumerable: true,
+  get: function get() {
+    return _auth_AdminController.signup;
+  }
+});
 Object.defineProperty(exports, "updateCart", {
   enumerable: true,
   get: function get() {

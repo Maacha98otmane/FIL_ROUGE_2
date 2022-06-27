@@ -3,21 +3,25 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.logoutAdmin = exports.loginAdmin = void 0;
+exports.signup = exports.logoutAdmin = exports.loginAdmin = void 0;
 
 var _helpers = require("../../helpers");
 
 var Admin = require('../../models/admin');
 
-// const signup = (req, res) => {
-//     const admin = new Admin(req.body);
-//     admin.save((err, admin) => {
-//         if (err) {
-//             return res.status(400).send(err)
-//         }
-//         res.send(admin)
-//     })
-// }
+var signup = function signup(req, res) {
+  var admin = new Admin(req.body);
+  admin.save(function (err, admin) {
+    if (err) {
+      return res.status(400).send(err);
+    }
+
+    res.send(admin);
+  });
+};
+
+exports.signup = signup;
+
 var loginAdmin = function loginAdmin(req, res) {
   var _req$body = req.body,
       email = _req$body.email,
@@ -48,8 +52,7 @@ var loginAdmin = function loginAdmin(req, res) {
     });
     return token ? res.status(200).json({
       isLogged: true,
-      token: token,
-      admin: admin
+      token: token
     }) : res.status(500).json({
       isLogged: false,
       error: "cant create token"

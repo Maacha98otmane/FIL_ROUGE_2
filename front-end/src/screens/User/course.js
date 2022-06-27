@@ -123,7 +123,7 @@ function CoursePage(props){
 
                 <div className="player rel">
                 <ReactPlayer
-        controls={true}
+              controls={true}
               pip={true}
               className="player"
               width="100%"
@@ -137,7 +137,7 @@ function CoursePage(props){
                   },
                 },
               }}
-        url={videoUrl ? videoUrl :"https://www.youtube.com/watch?v=cpP-fCo8Dn4"} />
+             url={videoUrl ? videoUrl :"https://www.youtube.com/watch?v=cpP-fCo8Dn4"} />
                 </div>
 
                 <div className="extras-block rel flex">

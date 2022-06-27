@@ -7,7 +7,7 @@ export { getCourse ,getAllCourse, addCourse, deleteCourse, getRandomCourse, getC
 
 export {createFormer,confirmFormerEmail, deleteFormer, updateFormer,getAllFormers,getFormer,getTopFormersByRating,updateRating,countFormers} from "./formerController";
 
-export {loginAdmin,logoutAdmin} from "./Auth/auth_AdminController";
+export {loginAdmin,signup,logoutAdmin} from "./Auth/auth_AdminController";
 
 export {createCustomer,confirmEmail, deleteCustomer, updateCustomer,getAllCustomers,getCustomer,incrementOwnCourse,countCustomers} from "./customerController";
 

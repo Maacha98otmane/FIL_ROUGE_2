@@ -20,7 +20,7 @@ var createToken = function createToken() {
 
   switch (role) {
     case "ADMIN":
-      return _jsonwebtoken["default"].sign(payload, process.env.SECRET_KEY_MANAGER, {
+      return _jsonwebtoken["default"].sign(payload, process.env.SECRET_KEY_ADMIN, {
         expiresIn: "1h"
       });
 

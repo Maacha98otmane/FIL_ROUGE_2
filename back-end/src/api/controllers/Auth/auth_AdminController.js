@@ -1,17 +1,17 @@
 const Admin = require('../../models/admin')
 import { createToken } from "../../helpers";
 
-// const signup = (req, res) => {
+const signup = (req, res) => {
 
-//     const admin = new Admin(req.body);
-//     admin.save((err, admin) => {
-//         if (err) {
-//             return res.status(400).send(err)
-//         }
-//         res.send(admin)
-//     })
+    const admin = new Admin(req.body);
+    admin.save((err, admin) => {
+        if (err) {
+            return res.status(400).send(err)
+        }
+        res.send(admin)
+    })
 
-// }
+}
 const loginAdmin = (req, res) => {
 
     const {
@@ -40,7 +40,7 @@ const loginAdmin = (req, res) => {
             expires: new Date(Date.now() + 4 * 3600000)
         })
         return token
-            ? res.status(200).json({ isLogged: true, token,admin })
+            ? res.status(200).json({ isLogged: true, token })
             : res.status(500).json({ isLogged: false, error: "cant create token" });
     })
 
@@ -54,5 +54,6 @@ const logoutAdmin = (req, res) => {
 }
 export {
     loginAdmin,
+    signup,
     logoutAdmin
 }
