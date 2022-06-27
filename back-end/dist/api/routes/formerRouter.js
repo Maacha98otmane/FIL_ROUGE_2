@@ -19,6 +19,7 @@ exports.router = router;
 // } from "../middlewares"
 router.post("/confirmFormerEmail/:id", _controllers.confirmFormerEmail);
 router.get("/getAllFormers", _controllers.getAllFormers);
+router.get("/countFormers", _controllers.countFormers);
 router.get("/getTopFormersByRating", _controllers.getTopFormersByRating);
 router.get("/getFormer/:id", _controllers.getFormer);
 router.post("/createFormer", _controllers.createFormer);

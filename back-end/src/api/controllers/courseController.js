@@ -20,29 +20,35 @@ const getCourse = async (req, res) => {
 }
 
 const addCourse = async (req, res) => {
-    const { title, description, price, hours, category } = req.body;
-    const { photo } = req.files;
-    const slug = title.replace(/\s+/g, '-').toLowerCase();
-    const newCourse = new Course({
-        title,
-        description,
-        price,
-        hours,
-        category,
-        slug,
-        photo
-    });
     try {
-        const doc = await newCourse.save();
-        return res.status(200).json({
+        const {
+            title,
+            slug,
+            level,
+            description,
+            price,
+            photo,
+            hours,
+            category,
+        } = req.body;
+        const course = new Course({
+            title,
+            slug,
+            level,
+            description,
+            price,
+            photo,
+            hours,
+            category,
+        });
+        await course.save();
+        res.status(200).json({
             status: true,
-            message: doc
+            message: "course added successfully",
+            course,
         });
     } catch (err) {
-        return res.status(400).json({
-            status: false,
-            message: err.message
-        });
+        res.status(500).json(err);
     }
 }
 

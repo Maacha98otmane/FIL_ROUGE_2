@@ -73,5 +73,22 @@ const countEpisodes = async (req, res) => {
         res.status(500).json(err);
     }
 }
+//delete all episodes according to course
+const deleteAllEpisodes = async (req, res) => {
+    try {
+        const { courseId } = req.params;
+        await Episode.deleteMany({ course: courseId });
+        res.status(200).json({
+            status: true,
+            message: "deleted successfully"
+        });
+    } catch (e) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        });
+    }
+}
 
-export { addEpisode, getEpisode, getAllEpisodes, deleteEpisode, updateEpisode, countEpisodes };
+
+export { addEpisode, getEpisode, getAllEpisodes, deleteEpisode, updateEpisode, countEpisodes, deleteAllEpisodes };

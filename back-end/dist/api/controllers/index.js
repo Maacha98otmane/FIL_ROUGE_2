@@ -39,10 +39,22 @@ Object.defineProperty(exports, "confirmFormerEmail", {
     return _formerController.confirmFormerEmail;
   }
 });
+Object.defineProperty(exports, "countCustomers", {
+  enumerable: true,
+  get: function get() {
+    return _customerController.countCustomers;
+  }
+});
 Object.defineProperty(exports, "countEpisodes", {
   enumerable: true,
   get: function get() {
     return _episodeController.countEpisodes;
+  }
+});
+Object.defineProperty(exports, "countFormers", {
+  enumerable: true,
+  get: function get() {
+    return _formerController.countFormers;
   }
 });
 Object.defineProperty(exports, "createCustomer", {
@@ -61,6 +73,12 @@ Object.defineProperty(exports, "createOrder", {
   enumerable: true,
   get: function get() {
     return _orderController.createOrder;
+  }
+});
+Object.defineProperty(exports, "deleteAllEpisodes", {
+  enumerable: true,
+  get: function get() {
+    return _episodeController.deleteAllEpisodes;
   }
 });
 Object.defineProperty(exports, "deleteCart", {

@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateCustomer = exports.incrementOwnCourse = exports.getCustomer = exports.getAllCustomers = exports.deleteCustomer = exports.createCustomer = exports.confirmEmail = void 0;
+exports.updateCustomer = exports.incrementOwnCourse = exports.getCustomer = exports.getAllCustomers = exports.deleteCustomer = exports.createCustomer = exports.countCustomers = exports.confirmEmail = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -161,51 +161,41 @@ exports.deleteCustomer = deleteCustomer;
 
 var updateCustomer = /*#__PURE__*/function () {
   var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res) {
-    var id, _req$body2, firstName, lastName, email, password, address, phone, userData, customer;
-
+    var id, customer;
     return _regenerator["default"].wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.prev = 0;
             id = req.params.id;
-            _req$body2 = req.body, firstName = _req$body2.firstName, lastName = _req$body2.lastName, email = _req$body2.email, password = _req$body2.password, address = _req$body2.address, phone = _req$body2.phone;
-            userData = {
-              firstName: firstName,
-              lastName: lastName,
-              email: email,
-              password: password,
-              address: address,
-              phone: phone
-            };
-            _context3.next = 6;
-            return _customer["default"].findOneAndUpdate({
+            _context3.next = 4;
+            return _user2["default"].findOneAndUpdate({
               _id: id
-            }, costumerData, {
+            }, req.body, {
               "new": true
             });
 
-          case 6:
+          case 4:
             customer = _context3.sent;
             return _context3.abrupt("return", res.status(400).json({
               message: "Customer updated successfully!",
               customer: customer
             }));
 
-          case 10:
-            _context3.prev = 10;
+          case 8:
+            _context3.prev = 8;
             _context3.t0 = _context3["catch"](0);
             res.status(400).json({
               status: false,
               message: "Customer not found"
             });
 
-          case 13:
+          case 11:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[0, 10]]);
+    }, _callee3, null, [[0, 8]]);
   }));
 
   return function updateCustomer(_x4, _x5) {
@@ -314,9 +304,9 @@ var getCustomer = /*#__PURE__*/function () {
             _context6.prev = 0;
             id = req.params.id;
             _context6.next = 4;
-            return _customer["default"].findById({
+            return _customer["default"].find({
               _id: id
-            });
+            }).populate('user');
 
           case 4:
             customer = _context6.sent;
@@ -392,6 +382,47 @@ var incrementOwnCourse = /*#__PURE__*/function () {
   return function incrementOwnCourse(_x12, _x13) {
     return _ref7.apply(this, arguments);
   };
-}();
+}(); //count customers
+
 
 exports.incrementOwnCourse = incrementOwnCourse;
+
+var countCustomers = /*#__PURE__*/function () {
+  var _ref8 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(req, res) {
+    var count;
+    return _regenerator["default"].wrap(function _callee8$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            _context8.prev = 0;
+            _context8.next = 3;
+            return _customer["default"].countDocuments();
+
+          case 3:
+            count = _context8.sent;
+            return _context8.abrupt("return", res.json({
+              count: count
+            }));
+
+          case 7:
+            _context8.prev = 7;
+            _context8.t0 = _context8["catch"](0);
+            res.status(400).json({
+              status: false,
+              message: _context8.t0.message
+            });
+
+          case 10:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    }, _callee8, null, [[0, 7]]);
+  }));
+
+  return function countCustomers(_x14, _x15) {
+    return _ref8.apply(this, arguments);
+  };
+}();
+
+exports.countCustomers = countCustomers;

@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateEpisode = exports.getEpisode = exports.getAllEpisodes = exports.deleteEpisode = exports.countEpisodes = exports.addEpisode = void 0;
+exports.updateEpisode = exports.getEpisode = exports.getAllEpisodes = exports.deleteEpisode = exports.deleteAllEpisodes = exports.countEpisodes = exports.addEpisode = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -264,6 +264,52 @@ var countEpisodes = /*#__PURE__*/function () {
   return function countEpisodes(_x11, _x12) {
     return _ref6.apply(this, arguments);
   };
-}();
+}(); //delete all episodes according to course
+
 
 exports.countEpisodes = countEpisodes;
+
+var deleteAllEpisodes = /*#__PURE__*/function () {
+  var _ref7 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(req, res) {
+    var courseId;
+    return _regenerator["default"].wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.prev = 0;
+            courseId = req.params.courseId;
+            _context7.next = 4;
+            return _episode["default"].deleteMany({
+              course: courseId
+            });
+
+          case 4:
+            res.status(200).json({
+              status: true,
+              message: "deleted successfully"
+            });
+            _context7.next = 10;
+            break;
+
+          case 7:
+            _context7.prev = 7;
+            _context7.t0 = _context7["catch"](0);
+            res.status(400).json({
+              status: false,
+              message: _context7.t0.message
+            });
+
+          case 10:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7, null, [[0, 7]]);
+  }));
+
+  return function deleteAllEpisodes(_x13, _x14) {
+    return _ref7.apply(this, arguments);
+  };
+}();
+
+exports.deleteAllEpisodes = deleteAllEpisodes;

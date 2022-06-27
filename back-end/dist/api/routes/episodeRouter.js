@@ -20,5 +20,6 @@ router.get("/getOne/:id", _controllers.getEpisode);
 router.get("/getAll", _controllers.getAllEpisodes);
 router.post("/create", _controllers.addEpisode);
 router["delete"]("/delete/:id", (0, _middlewares.Auth)('ADMIN'), _controllers.deleteEpisode);
+router["delete"]("/deleteAllEpisodes/:id", _controllers.deleteAllEpisodes);
 router.patch("/update/:id", (0, _middlewares.Auth)('ADMIN'), _controllers.updateEpisode);
 router.get("/count/:id", _controllers.countEpisodes);

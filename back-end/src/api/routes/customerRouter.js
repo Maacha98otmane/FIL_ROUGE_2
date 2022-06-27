@@ -9,6 +9,7 @@ import {
     deleteCustomer,
     updateCustomer,
     getAllCustomers,
+    countCustomers,
     incrementOwnCourse,
     getCustomer
 } from "../controllers"
@@ -20,6 +21,7 @@ import {
 
 router.get("/confirmEmail/:id", confirmEmail)
 router.get("/getAllCustomers", getAllCustomers)
+router.get("/countCustomers", countCustomers)
 router.get("/getCustomer/:id", getCustomer)
 router.post("/createCustomer", createCustomer)
 router.post("/createOrder", createOrder)

@@ -20,6 +20,7 @@ exports.router = router;
 // } from "../middlewares"
 router.get("/confirmEmail/:id", _controllers.confirmEmail);
 router.get("/getAllCustomers", _controllers.getAllCustomers);
+router.get("/countCustomers", _controllers.countCustomers);
 router.get("/getCustomer/:id", _controllers.getCustomer);
 router.post("/createCustomer", _controllers.createCustomer);
 router.post("/createOrder", _controllers.createOrder);

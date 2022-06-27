@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateRating = exports.updateFormer = exports.getTopFormersByRating = exports.getFormer = exports.getAllFormers = exports.deleteFormer = exports.createFormer = exports.confirmFormerEmail = void 0;
+exports.updateRating = exports.updateFormer = exports.getTopFormersByRating = exports.getFormer = exports.getAllFormers = exports.deleteFormer = exports.createFormer = exports.countFormers = exports.confirmFormerEmail = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -161,51 +161,41 @@ exports.deleteFormer = deleteFormer;
 
 var updateFormer = /*#__PURE__*/function () {
   var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res) {
-    var id, _req$body2, firstName, lastName, email, password, address, phone, userData, former;
-
+    var id, former;
     return _regenerator["default"].wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.prev = 0;
             id = req.params.id;
-            _req$body2 = req.body, firstName = _req$body2.firstName, lastName = _req$body2.lastName, email = _req$body2.email, password = _req$body2.password, address = _req$body2.address, phone = _req$body2.phone;
-            userData = {
-              firstName: firstName,
-              lastName: lastName,
-              address: address,
-              phone: phone,
-              email: email,
-              password: password
-            };
-            _context3.next = 6;
-            return _former["default"].findOneAndUpdate({
+            _context3.next = 4;
+            return _user2["default"].findOneAndUpdate({
               _id: id
-            }, userData, {
+            }, req.body, {
               "new": true
             });
 
-          case 6:
+          case 4:
             former = _context3.sent;
             return _context3.abrupt("return", res.status(400).json({
               message: "Former updated successfully!",
               former: former
             }));
 
-          case 10:
-            _context3.prev = 10;
+          case 8:
+            _context3.prev = 8;
             _context3.t0 = _context3["catch"](0);
             res.status(400).json({
               status: false,
               message: "Former not found"
             });
 
-          case 13:
+          case 11:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[0, 10]]);
+    }, _callee3, null, [[0, 8]]);
   }));
 
   return function updateFormer(_x4, _x5) {
@@ -316,7 +306,7 @@ var getFormer = /*#__PURE__*/function () {
             _context6.next = 4;
             return _former["default"].findById({
               _id: id
-            });
+            }).populate('user');
 
           case 4:
             former = _context6.sent;
@@ -435,6 +425,47 @@ var getTopFormersByRating = /*#__PURE__*/function () {
   return function getTopFormersByRating(_x14, _x15) {
     return _ref8.apply(this, arguments);
   };
-}();
+}(); //count formers
+
 
 exports.getTopFormersByRating = getTopFormersByRating;
+
+var countFormers = /*#__PURE__*/function () {
+  var _ref9 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee9(req, res) {
+    var count;
+    return _regenerator["default"].wrap(function _callee9$(_context9) {
+      while (1) {
+        switch (_context9.prev = _context9.next) {
+          case 0:
+            _context9.prev = 0;
+            _context9.next = 3;
+            return _former["default"].countDocuments();
+
+          case 3:
+            count = _context9.sent;
+            return _context9.abrupt("return", res.json({
+              count: count
+            }));
+
+          case 7:
+            _context9.prev = 7;
+            _context9.t0 = _context9["catch"](0);
+            res.status(400).json({
+              status: false,
+              message: _context9.t0.message
+            });
+
+          case 10:
+          case "end":
+            return _context9.stop();
+        }
+      }
+    }, _callee9, null, [[0, 7]]);
+  }));
+
+  return function countFormers(_x16, _x17) {
+    return _ref9.apply(this, arguments);
+  };
+}();
+
+exports.countFormers = countFormers;

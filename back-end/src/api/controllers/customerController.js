@@ -96,27 +96,8 @@ const updateCustomer = async (req, res) => {
     try {
         const {
             id,
-        } = req.params
-
-        const {
-            firstName,
-            lastName,
-            email,
-            password,
-            address,
-            phone,
-        } = req.body
-
-        const userData = {
-            firstName,
-            lastName,
-            email,
-            password,
-            address,
-            phone,
-        }
-        
-        const customer = await Customer.findOneAndUpdate({ _id: id }, costumerData, { new: true });
+        } = req.params;
+        const customer = await User.findOneAndUpdate({ _id: id }, req.body, { new: true });
         
         return res.status(400).json({
             message: "Customer updated successfully!",
@@ -168,7 +149,7 @@ const getAllCustomers = async (req, res) => {
 const getCustomer = async (req, res) => {
     try {
         const { id } = req.params;
-        const customer = await Customer.findById({ _id: id });
+        const customer = await Customer.find({ _id: id }).populate('user');
         return res.json({
             customer
         });
@@ -197,16 +178,19 @@ const incrementOwnCourse = async (req, res) => {
         })
     }
 }
+//count customers
+const countCustomers = async (req, res) => {
+    try {
+        const count = await Customer.countDocuments();
+        return res.json({
+            count
+        });
+    } catch (e) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        })
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-export {createCustomer,confirmEmail, deleteCustomer, updateCustomer,getAllCustomers,getCustomer,incrementOwnCourse}
+export {createCustomer,confirmEmail, deleteCustomer, updateCustomer,getAllCustomers,getCustomer,incrementOwnCourse,countCustomers}

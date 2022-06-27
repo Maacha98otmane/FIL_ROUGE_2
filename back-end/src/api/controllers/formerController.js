@@ -97,25 +97,7 @@ const updateFormer = async (req, res) => {
             id,
         } = req.params
 
-        const {
-            firstName,
-            lastName,
-            email,
-            password,
-            address,
-            phone,
-        } = req.body
-
-        const userData = {
-            firstName,
-            lastName,
-            address,
-            phone,
-            email,
-            password,
-        }
-        
-        const former = await Former.findOneAndUpdate({ _id: id }, userData, { new: true });
+        const former = await User.findOneAndUpdate({ _id: id }, req.body, { new: true });
         
         return res.status(400).json({
             message: "Former updated successfully!",
@@ -165,7 +147,7 @@ const getAllFormers = async (req, res) => {
 const getFormer = async (req, res) => {
     try {
         const { id } = req.params;
-        const former = await Former.findById({ _id: id });
+        const former = await Former.findById({ _id: id }).populate('user');
         return res.json({
             former
         });
@@ -208,5 +190,19 @@ const getTopFormersByRating = async (req, res) => {
         })
     }
 }
+//count formers
+const countFormers = async (req, res) => {
+    try {
+        const count = await Former.countDocuments();
+        return res.json({
+            count
+        });
+    } catch (e) {
+        res.status(400).json({
+            status: false,
+            message: e.message
+        })
+    }
+}
 
-export {createFormer,confirmFormerEmail, deleteFormer, updateFormer,getAllFormers,getFormer,getTopFormersByRating,updateRating}
+export {createFormer,confirmFormerEmail, deleteFormer, updateFormer,getAllFormers,getFormer,getTopFormersByRating,updateRating,countFormers}

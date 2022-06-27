@@ -61,49 +61,47 @@ exports.getCourse = getCourse;
 
 var addCourse = /*#__PURE__*/function () {
   var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
-    var _req$body, title, description, price, hours, category, photo, slug, newCourse, doc;
+    var _req$body, title, slug, level, description, price, photo, hours, category, course;
 
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _req$body = req.body, title = _req$body.title, description = _req$body.description, price = _req$body.price, hours = _req$body.hours, category = _req$body.category;
-            photo = req.files.photo;
-            slug = title.replace(/\s+/g, '-').toLowerCase();
-            newCourse = new _course["default"]({
+            _context2.prev = 0;
+            _req$body = req.body, title = _req$body.title, slug = _req$body.slug, level = _req$body.level, description = _req$body.description, price = _req$body.price, photo = _req$body.photo, hours = _req$body.hours, category = _req$body.category;
+            course = new _course["default"]({
               title: title,
+              slug: slug,
+              level: level,
               description: description,
               price: price,
+              photo: photo,
               hours: hours,
-              category: category,
-              slug: slug,
-              photo: photo
+              category: category
             });
-            _context2.prev = 4;
-            _context2.next = 7;
-            return newCourse.save();
+            _context2.next = 5;
+            return course.save();
 
-          case 7:
-            doc = _context2.sent;
-            return _context2.abrupt("return", res.status(200).json({
+          case 5:
+            res.status(200).json({
               status: true,
-              message: doc
-            }));
+              message: "course added successfully",
+              course: course
+            });
+            _context2.next = 11;
+            break;
+
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2["catch"](0);
+            res.status(500).json(_context2.t0);
 
           case 11:
-            _context2.prev = 11;
-            _context2.t0 = _context2["catch"](4);
-            return _context2.abrupt("return", res.status(400).json({
-              status: false,
-              message: _context2.t0.message
-            }));
-
-          case 14:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[4, 11]]);
+    }, _callee2, null, [[0, 8]]);
   }));
 
   return function addCourse(_x3, _x4) {

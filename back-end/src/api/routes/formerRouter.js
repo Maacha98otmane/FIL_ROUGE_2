@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 import {
-    createFormer,confirmFormerEmail, deleteFormer, updateFormer,getAllFormers,getFormer,getTopFormersByRating,updateRating
+    createFormer,confirmFormerEmail, deleteFormer, updateFormer,getAllFormers,getFormer,getTopFormersByRating,updateRating,countFormers
 } from "../controllers"
 
 // import {
@@ -12,6 +12,7 @@ import {
 
 router.post("/confirmFormerEmail/:id", confirmFormerEmail)
 router.get("/getAllFormers", getAllFormers)
+router.get("/countFormers", countFormers)
 router.get("/getTopFormersByRating", getTopFormersByRating)
 router.get("/getFormer/:id", getFormer)
 router.post("/createFormer", createFormer)

@@ -11,14 +11,9 @@ var courseSchema = new mongoose.Schema({
   },
   slug: {
     type: String,
-    require: true,
-    maxLength: 42
-  },
-  level: {
-    type: String,
     require: true
   },
-  type: {
+  level: {
     type: String,
     require: true
   },
@@ -32,15 +27,15 @@ var courseSchema = new mongoose.Schema({
     require: true
   },
   photo: {
-    type: Buffer,
+    type: String,
     require: true
   },
   hours: {
     type: String
   },
   category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category'
+    type: String,
+    require: true
   }
 }, {
   timestamps: true
