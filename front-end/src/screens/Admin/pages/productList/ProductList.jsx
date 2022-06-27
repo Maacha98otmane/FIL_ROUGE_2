@@ -16,9 +16,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import MuiAlert from '@mui/material/Alert';
 import {useQuery} from "react-query"; // get data && use mutation => post request
-import { getAllCustomers } from "../../../../helpers/api/customer";
-import { ButtonGroup } from "@material-ui/core";
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import { getAllCourses } from "../../../../helpers/api/course";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +48,7 @@ export default function ProductList() {
     isLoading, 
     isError, 
     data=[],
-  } = useQuery('customerList', getAllCustomers);
+  } = useQuery('CourseAdminList', getAllCourses);
 
   return (
     <div className={classes.root}>
@@ -59,7 +57,7 @@ export default function ProductList() {
         <Box display="flex">
           <Box flexGrow={1}>
             <Typography component="h2" variant="h6" color="primary" gutterBottom>
-              Formers List
+              Course List
             </Typography>
           </Box>
         </Box>
@@ -67,32 +65,27 @@ export default function ProductList() {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">Avatar</TableCell>
-              <TableCell align="left">Full Name</TableCell>
-              <TableCell align="left">Email</TableCell>
-              <TableCell align="left">createdAt</TableCell>
-              <TableCell align="center">Action</TableCell>
+            <TableCell align="center">Image</TableCell>
+              <TableCell align="left">Title</TableCell>
+              <TableCell align="left">Slug</TableCell>
+              <TableCell align="left">Description</TableCell>
+              <TableCell align="center">Price</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
           {isLoading ? <CircularProgress align="center" /> : isError ? <Alert align="center" severity="error">This is an error message!</Alert>:
-            data.map((customer) => (
-              <TableRow key={customer._id}>
+            data.map((course) => (
+              <TableRow key={course._id}>
                 <TableCell align="center">
                   <Box display="flex" justifyContent="center">
-                    <Avatar src={customer.avatar} />
+                    <Avatar src={course.photo} />
                   </Box>
                 </TableCell>
-                <TableCell align="left">{customer.user.firstName} {customer.user.lastName}</TableCell>
-                <TableCell align="left">{customer.user.email}</TableCell> 
-                <TableCell align="left">{customer.user.createdAt}</TableCell> 
-                <TableCell align="center">
-                  <ButtonGroup  color="primary" aria-label="outlined primary button group">
-                  <Link to={"/product/" + customer._id}>
-                    <VisibilityIcon />
-                  </Link>
-                  </ButtonGroup>
-                </TableCell>
+                <TableCell align="left">{course.title}</TableCell>
+                <TableCell align="left">{course.slug}</TableCell> 
+                <TableCell align="left">{course.description}</TableCell> 
+                <TableCell align="left">{course.price}</TableCell> 
+                
               </TableRow>
             ))}
           </TableBody>

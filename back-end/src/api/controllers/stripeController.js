@@ -2,7 +2,7 @@ const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 
 const payment = async (req, res) => {
-
+  console.log(req.body);
     stripe.charges.create(
         {
           source: req.body.tokenId,

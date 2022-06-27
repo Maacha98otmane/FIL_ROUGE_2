@@ -11,7 +11,6 @@ import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orien
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
 import MuiAlert from '@mui/material/Alert';
-import Snackbar from '@mui/material/Snackbar';
 import {ref, uploadBytesResumable, getDownloadURL} from "@firebase/storage";
 import { LinearProgress } from "@material-ui/core";
 import { Typography } from "@mui/material";
@@ -28,7 +27,6 @@ export default function NewProduct() {
 
   const addCourseMutation = useMutation(addCourse, {
     onSuccess: () => {
-      setOpen(true);
     }
   });
   const onSubmit = async (data) => {
@@ -53,22 +51,12 @@ export default function NewProduct() {
       })
   };
 
-  const [open, setOpen] = React.useState(false);
 
   if (addCourseMutation.isSuccess) {
     return <Redirect to="/products" />};
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   return (
     <>
-    <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          Customer added successfully
-        </Alert>
-      </Snackbar>
     <div className="newProduct">
       <h1 className="addProductTitle">New Product</h1>
       <form className="addProductForm" onSubmit={handleSubmit(onSubmit)}>
@@ -88,12 +76,6 @@ export default function NewProduct() {
             <Typography  variant = "body2">
               {progress}%
             </Typography>
-          {/* <label>Image</label>
-          <input files={files} onChange={setFiles} name="photo" type="file" id="file" />
-          <LinearProgress variant="determinate" value={progress} />
-            <Typography  variant = "body2">
-              {progress}%
-            </Typography> */}
         </div>
         <div className="addProductItem">
           <label>Title</label>

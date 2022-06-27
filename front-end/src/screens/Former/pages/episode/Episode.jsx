@@ -1,5 +1,5 @@
-import { Link,useParams } from "react-router-dom";
-import "./product.css";
+import { useParams } from "react-router-dom";
+import "./episode.css";
 import Chart from "../../components/chart/Chart"
 import {productData} from "../../dummyData"
 import {useQuery, useMutation} from "react-query"; // get data && use mutation => post request
@@ -7,7 +7,7 @@ import {useQueryClient} from "react-query";
 import { Publish } from "@material-ui/icons";
 import { getCourse } from "../../../../helpers/api/course";
 
-export default function Product() {
+export default function Episode() {
 const params = useParams();
 const queryClient = useQueryClient();
 const Id = params.productId;
@@ -21,12 +21,6 @@ return response
 console.log(data);
 return (
 <div className="product">
-    <div className="productTitleContainer">
-        <h1 className="productTitle">Product</h1>
-        <Link to={"/addEpisode/" + Id}>
-        <button className="productAddButton">Add Episode</button>
-        </Link>
-    </div>
     {data.map((item, index) => (
     <>
         <div className="productTop">

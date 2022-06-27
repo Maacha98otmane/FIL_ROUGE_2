@@ -19,6 +19,7 @@ var payment = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            console.log(req.body);
             stripe.charges.create({
               source: req.body.tokenId,
               amount: req.body.amount,
@@ -31,7 +32,7 @@ var payment = /*#__PURE__*/function () {
               }
             });
 
-          case 1:
+          case 2:
           case "end":
             return _context.stop();
         }

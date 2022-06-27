@@ -37,21 +37,25 @@ import AdminFormersList from "./screens/Admin/pages/formerList/FormerList";
 import AdminFormer from "./screens/Admin/pages/former/Former";
 import AdminNewFormer from "./screens/Admin/pages/newFormer/NewFormer";
 import AdminProductList from "./screens/Admin/pages/productList/ProductList";
-import AdminProduct from "./screens/Admin/pages/product/Product";
-import AdminNewProduct from "./screens/Admin/pages/newProduct/NewProduct";
 
 //import screen former
 import FormerSidebar from "./screens/Former/components/sidebar/Sidebar";
 import FormerTopbar from "./screens/Former/components/topbar/Topbar";
 import FormerHome from "./screens/Former/pages/home/Home";
-import FormerUserList from "./screens/Former/pages/userList/UserList";
-import FormerUser from "./screens/Former/pages/user/User";
-import FormerNewUser from "./screens/Former/pages/newUser/NewUser";
 import FormerProductList from "./screens/Former/pages/productList/ProductList";
 import FormerProduct from "./screens/Former/pages/product/Product";
 import FormerNewProduct from "./screens/Former/pages/newProduct/NewProduct";
+import FormerEpisode from "./screens/Former/pages/episode/Episode";
 
-
+//import screen home
+import Home from "./screens/home/pages/Home";
+import Product from "./screens/home/pages/Product";
+import ProductList from "./screens/home/pages/ProductList";
+import Register from "./screens/home/pages/Register";
+import Login from "./screens/home/pages/Login";
+import Cart from "./screens/home/pages/Cart";
+import Success from "./screens/home/pages/Success";
+import PaypalSuccess from "./screens/home/pages/PaypalSuccess";
 
 
 
@@ -154,12 +158,6 @@ function AppLoader(){
           <Route path="/products">
             <AdminProductList />
           </Route>
-          <Route path="/product/:productId">
-            <AdminProduct />
-          </Route>
-          <Route path="/newproduct">
-            <AdminNewProduct />
-          </Route>
         </Switch>
       </div>
           </HashRouter>
@@ -185,11 +183,48 @@ function AppLoader(){
           <Route path="/newproduct">
             <FormerNewProduct />
           </Route>
+          <Route path="/addEpisode">
+            <FormerEpisode />
+          </Route>
         </Switch>
       </div>
           </HashRouter>
         );
       };
+
+      const HomePath = ({match}) => {
+        const user = true;
+        return(
+          <HashRouter>
+          <Switch>
+          <Route exact path="/">
+          <Home />
+          </Route>
+          <Route path="/cart">
+          <Cart />
+          </Route>
+          <Route path="/success">
+          <Success />
+          </Route>
+          <Route path="/PaypalSuccess">
+          <PaypalSuccess />
+          </Route>
+          <Route path="/product/:id">
+          <Product />
+          </Route>
+          <Route path="/products/:category">
+          <ProductList />
+          </Route>
+          <Route path="/register">
+          <Register/>
+          </Route>
+          <Route path="/login">
+          <Login/>
+          </Route>
+        </Switch>
+          </HashRouter>
+        );
+      }
 
     return (
         
@@ -200,7 +235,7 @@ function AppLoader(){
                         context.appLoaded() ? 
                         <div className="App">      
                             <BrowserRouter>
-                            <Route path="/" exact component={Accueil} />
+                            <Route path="/" exact component={HomePath} />
                             <div className='flex'>
                             <Route path='/user' component={UserPath} />
                             </div>

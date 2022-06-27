@@ -7,9 +7,9 @@ const courseApi = axios.create({
 export const addCourse = async (data) => {
     return await courseApi.post('course/create', data);
 }
-export const getAllCustomers = async () => {
-    const response = await courseApi.get('customer/getAllCustomers');
-    return response.data.customers;
+export const getAllCourses = async () => {
+    const response = await courseApi.get('course/getAll');
+    return response.data;
 }
 
 export const deleteCustomer = async ({id}) => {
@@ -20,10 +20,10 @@ export const countCustomers = async () => {
     const response = await courseApi.get('customer/countCustomers');
     return response.data;
 }
-export const getCustomer = async (id) => {
-    const response = await courseApi.get(`customer/getCustomer/${id}`);
-    console.log(response.data.customer);
-    return response.data.customer;
+export const getCourse = async (id) => {
+    const response = await courseApi.get(`course/getOne/${id}`);
+    console.log(response.data.course);
+    return response.data.course;
 }
 // export const updateCustomer = async (data) => {
 //     return await courseApi.patch(`customer/updateCustomer/${data.id}`, data);
