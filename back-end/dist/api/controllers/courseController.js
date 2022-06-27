@@ -17,7 +17,7 @@ var _category = _interopRequireDefault(require("../models/category"));
 
 var getCourse = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
-    var id, doc;
+    var id, course;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -30,10 +30,9 @@ var getCourse = /*#__PURE__*/function () {
             });
 
           case 4:
-            doc = _context.sent;
+            course = _context.sent;
             return _context.abrupt("return", res.status(200).json({
-              status: true,
-              message: doc
+              course: course
             }));
 
           case 8:
