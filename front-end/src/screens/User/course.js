@@ -7,6 +7,9 @@ import Course2 from "../../ui/course-2.jpg";
 
 function CoursePage(props){
 
+    const [videoUrl, setVideo] = useState('');
+    console.log(videoUrl);
+
     const [course, setCourse] = useState(
         {
             ID: 1,
@@ -25,17 +28,21 @@ function CoursePage(props){
                 {
                     ID: 1,
                     title: "Introduction",
-                    duration: "03 min 24 secs"                    
+                    duration: "03 min 24 secs",
+                    videoUrl: "https://www.youtube.com/watch?v=4vjExcnbyiw"                   
                 },
                 {
                     ID: 2,
                     title: "Getting Started",
-                    duration: "09 min 55 secs"                    
+                    duration: "09 min 55 secs",
+                    videoUrl: "https://www.youtube.com/watch?v=z9CCL-qinM4"  
                 },
                 {
-                    ID: 1,
+                    ID: 3,
                     title: "The Illustration",
-                    duration: "62 mins 48 secs"                    
+                    duration: "62 mins 48 secs",
+                    videoUrl: "https://www.youtube.com/watch?v=QH2-TGUlwu4"
+    
                 }
             ]
         }
@@ -46,7 +53,10 @@ function CoursePage(props){
     var courseVideos = [];
     for(let i = 0; i < course.videos.length; i++){
         courseVideos.push(
-            <a href="fb" key={"course-video-" + i} className="noul aic rel flex">
+            <a
+            style={{"cursor": "pointer"}}
+            onClick={()=>setVideo(course.videos[i].videoUrl)}
+            key={"course-video-" + i} className="noul aic rel flex">
                 <div className="id s18 fontn cfff">{course.videos[i].ID}</div>
                 <div className="meta rel">
                     <h1 className="s15 lbl fontb c333">{course.videos[i].title}</h1>
@@ -127,7 +137,7 @@ function CoursePage(props){
                   },
                 },
               }}
-        url='https://www.youtube.com/watch?v=PZA8IP2umgw' />
+        url={videoUrl ? videoUrl :"https://www.youtube.com/watch?v=cpP-fCo8Dn4"} />
                 </div>
 
                 <div className="extras-block rel flex">
