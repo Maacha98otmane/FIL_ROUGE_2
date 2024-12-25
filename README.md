@@ -31,5 +31,5 @@ A modern e-learning platform inspired by **Udemy**, built with a **MERN stack** 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Maachaotmane/FIL_ROUGE_2.git
+   git clone https://github.com/Maachaotmane/Udemy_Clone.git
    cd FIL_ROUGE_2
